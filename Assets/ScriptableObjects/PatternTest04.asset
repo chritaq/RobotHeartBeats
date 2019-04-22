@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ef9b8f1f265e142b2351fc6ff5ce00, type: 3}
+  m_Name: PatternTest04
+  m_EditorClassIdentifier: 
+  everyOtherOrange: 10
+  bulletsPerFire: 0
+  rotationAmount: 0
+  patternTime: 5
+  bulletType: {fileID: 0}
+  bulletsPerArray: 2
+  arraySpread: 95
+  totalBulletsArray: 1
+  totalArraySpread: 0
+  spinSpeed: 0
+  spinSpeedChangeRate: 0
+  spinReversal: 0
+  maxSpinSpeed: 2
+  fireRate: 0.1
+  bulletSpeed: 20
+  bulletSpeedChangeRate: 0
+  bulletSpeedReversal: 0
+  maxBulletSpeed: 0
+  cannonWidth: 0
+  cannonHeight: 0
+  xOffset: 0
+  yOffset: 0

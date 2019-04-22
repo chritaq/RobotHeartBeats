@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d134c34093062488c558e89d6c0db2, type: 3}
+  m_Name: New Test CannonSpawner
+  m_EditorClassIdentifier: 
+  patternAttackData:
+  - pattern: {fileID: 11400000, guid: bc9791ea5e888de4f9dcfffc5ad27f32, type: 2}
+    timeBeforeSpawn: 0
+    finnishAttack: 0
+    speedMultiplier: 0
+  - pattern: {fileID: 11400000, guid: 8c43120b8ee4d0b409207507e5bf60e0, type: 2}
+    timeBeforeSpawn: 0
+    finnishAttack: 1
+    speedMultiplier: 0
+  - pattern: {fileID: 11400000, guid: 8c43120b8ee4d0b409207507e5bf60e0, type: 2}
+    timeBeforeSpawn: 2
+    finnishAttack: 1
+    speedMultiplier: 0
+  - pattern: {fileID: 11400000, guid: 8c43120b8ee4d0b409207507e5bf60e0, type: 2}
+    timeBeforeSpawn: 2
+    finnishAttack: 1
+    speedMultiplier: 0
