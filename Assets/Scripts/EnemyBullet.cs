@@ -10,17 +10,12 @@ public class EnemyBullet : Bullet
 
     private bool isOrange = false;
 
-    private void Awake()
-    {
-        
-    }
-
     void Start()
     {
         hitTag = "Player";
-        if(isOrange) {
-            hitTag2 = "Absorber";
-        }
+        //if(isOrange) {
+        //    hitTag2 = "Absorber";
+        //}
     }
 
 }

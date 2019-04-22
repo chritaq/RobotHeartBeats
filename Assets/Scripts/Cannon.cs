@@ -7,8 +7,6 @@ public class Cannon : MovingPart
 
     protected Rigidbody2D[] bulletClone;
 
-    //protected GameObject[] bulletClone;
-
     [SerializeField]
     protected Rigidbody2D bullet;
 
@@ -63,7 +61,6 @@ public class Cannon : MovingPart
             bulletPooled.transform.rotation = spawnRotation;
             bulletPooled.SetActive(true);
         }
-        
         
         bulletClone[bulletIndex] = bulletPooled.GetComponent<Rigidbody2D>();
 

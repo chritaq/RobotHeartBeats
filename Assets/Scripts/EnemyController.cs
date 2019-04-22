@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class EnemyController : Ship
 {
-    //[SerializeField]
-    //private EnemyCannon cannon;
-
-    private void FixedUpdate()
-    {
-        //cannon.RotateAndShoot();
-    }
 
 
     public override void HitShip(int bulletDamage)

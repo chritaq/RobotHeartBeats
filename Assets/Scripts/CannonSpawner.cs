@@ -75,49 +75,11 @@ public class CannonSpawner : MovingPart, IAbilityStartable
         yield return null;
     }
 
+
     private void SpawnCannonWithPattern(int i, int j)
     {
         enemyCannon.GetComponent<EnemyCannonNew>().pattern = patternAttacks[i].patternAttackData[j].pattern;
         enemyCannonClone[j] = Instantiate(enemyCannon, this.transform);
     }
-
-
-
-
-
-
-
-
-
-    //OldStuff
-    //private IEnumerator SpawnCannons()
-    //{
-        
-    //    for(int i = 0; i < patternAttacks.Length; i++)
-    //    {
-            
-    //        enemyCannonClone = new GameObject[patternAttacks[i].patternAttackData.Length];
-
-    //        for (int j = 0; j < patternAttacks[i].patternAttackData.Length; j++)
-    //        {
-    //            if (j != 0 && patternAttacks[i].patternAttackData[j].timeBeforeSpawn != 0)
-    //            {
-    //                yield return new WaitForSeconds(patternAttacks[i].patternAttackData[j].timeBeforeSpawn);
-    //            }
-
-    //            enemyCannon.GetComponent<EnemyCannonNew>().pattern = patternAttacks[i].patternAttackData[j].pattern;
-    //            enemyCannonClone[j] = Instantiate(enemyCannon, this.transform);
-
-
-    //            if (patternAttacks[i].patternAttackData[j].finnishAttack)
-    //            {
-    //                yield return new WaitForSeconds(patternAttacks[i].patternAttackData[j].pattern.patternTime);
-    //            }
-    //        }
-    //        yield return new WaitForSeconds(timesBeforeAttacks[i]);
-    //    }
-
-    //    yield return null;
-    //}
 
 }

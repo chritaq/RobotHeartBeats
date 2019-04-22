@@ -9,9 +9,6 @@ public class PlayerController : Ship
 
     private Camera cam;
 
-    [SerializeField]
-    private BulletAbsorber bulletAbsorber;
-
     
 
     [SerializeField]
@@ -55,11 +52,6 @@ public class PlayerController : Ship
     {
         Move();
         AimAndShoot();
-
-        if (state.Buttons.X == ButtonState.Pressed || state.Triggers.Right > triggerDeadZone && !bulletAbsorber.isAbsorbing)
-        {
-            bulletAbsorber.ActivateBulletAbsorb();
-        }
 
         if (Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(0);
@@ -160,10 +152,10 @@ public class PlayerController : Ship
         {
             Aim();
 
-            if(!bulletAbsorber.isAbsorbing)
-            {
-                Fire();
-            }
+            //if(!weapon.isSwinging)
+            //{
+            //    SwingWeapon();
+            //}
             
         }
     }
@@ -187,19 +179,23 @@ public class PlayerController : Ship
     }
 
 
-    
+
+
+
+
+    private float nextSwing;
 
     [SerializeField]
-    PlayerCannon cannon;
+    private float swingRate = 0.1f;
 
-    //private float nextFire;
-
-    //[SerializeField]
-    //private float fireRate = 0.1f;
-
-    private void Fire()
+    private void SwingWeapon()
     {
-        cannon.Fire();
+        if (Time.time > nextSwing)
+        {
+            nextSwing = Time.time + swingRate;
+
+            //Swing
+        }
     }
 
 
@@ -209,13 +205,9 @@ public class PlayerController : Ship
 
     public override void HitShip(int bulletDamage)
     {
-
-        if (!bulletAbsorber.isAbsorbing && Time.time > timeBeforeInvulnerableOff)
-        {
-            timeBeforeInvulnerableOff = Time.time + inVulnerableTime;
-            base.HitShip(bulletDamage);
-            StartCoroutine("Invulnerable");
-        }
+        timeBeforeInvulnerableOff = Time.time + inVulnerableTime;
+        base.HitShip(bulletDamage);
+        StartCoroutine("Invulnerable");
     }
 
 

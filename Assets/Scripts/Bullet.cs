@@ -6,8 +6,6 @@ public class Bullet : MovingPart
 {
     protected string hitTag;
     protected string hitTag2;
-
-    private BulletAbsorber absorberHit;
     private Ship shipHit;
 
     [SerializeField]
@@ -31,41 +29,30 @@ public class Bullet : MovingPart
 
     private void CheckTagOfObject(Collider2D other)
     {
-        if (other.gameObject.tag == "Absorber")
-        {
-            GetAbsorbed(other);
-        }
-
-        else
-        {
-            HitShip(other);
-        }
-
-        
-
+        HitShip(other);
     }
 
-    private void GetAbsorbed(Collider2D other)
-    {
-        absorberHit = other.gameObject.GetComponent<BulletAbsorber>();
-        absorberHit.OnBulletAbsorbed();
-    }
+    
 
     private void HitShip(Collider2D other)
     {
         if (hitTag == "Player")
         {
             shipHit = other.gameObject.GetComponent<PlayerController>();
+            shipHit.HitShip(bulletDamage);
         }
 
         else if (hitTag == "Enemy")
         {
             shipHit = other.gameObject.GetComponent<Ship>();
+            shipHit.HitShip(bulletDamage);
         }
-        shipHit.HitShip(bulletDamage);
+        
         
     }
 
+
+    //When bullet is out of screen
     private void OnBecameInvisible()
     {
         this.gameObject.SetActive(false);
