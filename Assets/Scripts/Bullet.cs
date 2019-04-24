@@ -2,58 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MovingPart
+public class Bullet : MovingPart, IHitable
 {
-    protected string hitTag;
-    protected string hitTag2;
-    private Ship shipHit;
+    private Ship playerShip;
 
     [SerializeField]
     protected int bulletDamage = 1;
+    [SerializeField]
+    protected int bulletHealth = 4;
 
-    private void Start()
-    {
-        //Destroy(this.gameObject, 5f);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == hitTag || other.gameObject.tag == hitTag2)
+        if (other.gameObject.tag == "Player")
         {
-            CheckTagOfObject(other);
-            this.gameObject.SetActive(false);
+            other.SendMessage("GetHit", bulletDamage);
+            Die();
         }
-
-        
-    }
-
-    private void CheckTagOfObject(Collider2D other)
-    {
-        HitShip(other);
-    }
-
-    
-
-    private void HitShip(Collider2D other)
-    {
-        if (hitTag == "Player")
-        {
-            shipHit = other.gameObject.GetComponent<PlayerController>();
-            shipHit.HitShip(bulletDamage);
-        }
-
-        else if (hitTag == "Enemy")
-        {
-            shipHit = other.gameObject.GetComponent<Ship>();
-            shipHit.HitShip(bulletDamage);
-        }
-        
-        
     }
 
 
-    //When bullet is out of screen
     private void OnBecameInvisible()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void GetHit(int damage)
+    {
+        bulletHealth -= damage;
+        if(bulletHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
     {
         this.gameObject.SetActive(false);
     }

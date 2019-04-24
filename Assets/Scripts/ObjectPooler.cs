@@ -31,15 +31,15 @@ public class ObjectPooler : MonoBehaviour
 
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject whiteBulletObject = (GameObject)Instantiate(WhiteBulletsToPool);
+            GameObject whiteBulletObject = (GameObject)Instantiate(WhiteBulletsToPool, this.transform);
             whiteBulletObject.SetActive(false);
             pooledWhiteBullets.Add(whiteBulletObject);
 
-            GameObject orangeBulletObject = (GameObject)Instantiate(orangeBulletsToPool);
+            GameObject orangeBulletObject = (GameObject)Instantiate(orangeBulletsToPool, this.transform);
             orangeBulletObject.SetActive(false);
             pooledOrangeBullets.Add(orangeBulletObject);
 
-            //GameObject blueBulletObject = (GameObject)Instantiate(blueBulletsToPool);
+            //GameObject blueBulletObject = (GameObject)Instantiate(blueBulletsToPool, this.transform);
             //blueBulletObject.SetActive(false);
             //pooledBlueBullets.Add(blueBulletObject);
         }

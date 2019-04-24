@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class EnemyCannonNew : Cannon
 {
+
     public PatternTest pattern;
-
     [SerializeField] private Rigidbody2D orangeBullet;
-
     [SerializeField] private Rigidbody2D bulletType;
-
-    private float patternTime; //flytta denna till PatternPattern? Ska kunna ställas in där.
-
-    //private int bulletsPerArray;
-    //private float arraySpread;
+    //flytta denna till PatternPattern? Ska kunna ställas in där.
+    private float patternTime; 
 
     private int totalBulletArrays;
     private float totalArraySpread;
 
-    private float spinSpeed; //Samma som rotationAmount?
+    //Samma som rotationAmount?
+    private float spinSpeed; 
     private float spinSpeedChangeRate;
     private bool spinReversal;
     private float maxSpinSpeed;
 
-    //private float fireRate;
-    //private float bulletSpeed;
     private float bulletSpeedChangeRate;
     private bool bulletSpeedReversal;
     private float maxBulletSpeed;
@@ -35,22 +30,20 @@ public class EnemyCannonNew : Cannon
     private float xOffset;
     private float yOffset;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         patternTime = pattern.patternTime + Time.time;
-
         everyOtherOrange = pattern.everyOtherOrange;
-
         bulletType = pattern.bulletType;
 
         bulletsPerArray = pattern.bulletsPerArray;
         bulletsArraySpread = pattern.arraySpread;
-
         totalBulletArrays = pattern.totalBulletsArray;
         totalArraySpread = pattern.totalArraySpread;
 
-        spinSpeed = pattern.spinSpeed; //Samma som rotationAmount?
+        //Samma som rotationAmount?
+        spinSpeed = pattern.spinSpeed; 
         spinSpeedChangeRate = pattern.spinSpeedChangeRate;
         spinReversal = pattern.spinReversal;
         maxSpinSpeed = pattern.maxSpinSpeed;
@@ -66,16 +59,13 @@ public class EnemyCannonNew : Cannon
 
         xOffset = pattern.xOffset;
         yOffset = pattern.yOffset;
-
-
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         StartPattern();
     }
-
 
 
     private void StartPattern()
@@ -85,6 +75,7 @@ public class EnemyCannonNew : Cannon
             Shoot();
             Spin();
         }
+
         else
         {
             Destroy(this.gameObject);
@@ -114,12 +105,13 @@ public class EnemyCannonNew : Cannon
 
             SpawnAndRotateBullets();
 
+            //Borde förklara vad detta gör.
             spawnRotationInDegrees = totalArraySpread - bulletsArraySpread;
         }
-
     }
 
 
+    //Denna ska skrivas om till nytt system.
     private int loadCount = 0;
     private int everyOtherOrange;
     private void TrySetBulletsToOrange()
@@ -138,6 +130,7 @@ public class EnemyCannonNew : Cannon
 
             loadCount++;
         }
+
         else
         {
             bulletTypeToSpawn = bullet;
@@ -148,32 +141,42 @@ public class EnemyCannonNew : Cannon
     private bool reversed = false;
     private void Spin()
     {
-        
         this.transform.Rotate(new Vector3(0, 0, spinSpeed));
 
+        //Bör delas upp i mindre funktioner
         if(spinReversal)
         {
-            if (spinSpeed >= maxSpinSpeed)
-            {
-                reversed = true;
-            }
-
-            if (spinSpeed <= -maxSpinSpeed)
-            {
-                reversed = false;
-            }
+            TrySpinReversal();
         }
 
+        TryChangeSpinSpeed();
+    }
+
+
+    private void TrySpinReversal()
+    {
+        if (spinSpeed >= maxSpinSpeed)
+        {
+            reversed = true;
+        }
+
+        if (spinSpeed <= -maxSpinSpeed)
+        {
+            reversed = false;
+        }
+    }
+
+
+    private void TryChangeSpinSpeed()
+    {
         if (spinSpeed < maxSpinSpeed && !reversed)
         {
             spinSpeed += spinSpeedChangeRate;
         }
 
-        if(spinSpeed > -maxSpinSpeed && reversed)
+        if (spinSpeed > -maxSpinSpeed && reversed)
         {
             spinSpeed -= spinSpeedChangeRate;
         }
-        
-
     }
 }

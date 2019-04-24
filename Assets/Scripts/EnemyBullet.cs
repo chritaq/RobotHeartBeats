@@ -9,10 +9,12 @@ public class EnemyBullet : Bullet
     [SerializeField]
 
     private bool isOrange = false;
+    [SerializeField]
+    private string bulletColor;
 
     void Start()
     {
-        hitTag = "Player";
+        //hitTag = "Player";
         //if(isOrange) {
         //    hitTag2 = "Absorber";
         //}

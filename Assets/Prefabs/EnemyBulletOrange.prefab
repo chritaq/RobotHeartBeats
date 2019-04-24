@@ -16,7 +16,9 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0}
   bulletDamage: 1
+  bulletHealth: 4
   isOrange: 1
+  bulletColor: 
 --- !u!1001 &7380101781799940667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28,6 +30,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyBulletOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953228183702496996, guid: ac3f714add9308241a773fd02ce8eb09,
+        type: 3}
+      propertyPath: m_TagString
+      value: OrangeBullet
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497001, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}

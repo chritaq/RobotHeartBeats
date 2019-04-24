@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Absorber
+  - Weapon
+  - BlueWeapon
+  - OrangeWeapon
+  - BlueBullet
+  - OrangeBullet
   layers:
   - Default
   - TransparentFX

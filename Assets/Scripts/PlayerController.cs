@@ -39,9 +39,6 @@ public class PlayerController : Ship
         {
             player = PlayerIndex.Four;
         }
-        
-        
-        
     }
 
 
@@ -50,24 +47,76 @@ public class PlayerController : Ship
 
     private void FixedUpdate()
     {
-        Move();
-        AimAndShoot();
+
+        if (state.Buttons.X == ButtonState.Pressed && isInvulnerable == false && dashCharges > 0)
+        {
+            StartCoroutine("Dash");
+        }
+
+        if(canMove)
+        {
+            Move();
+        }
 
         if (Input.GetKeyDown(KeyCode.R)) {
             SceneManager.LoadScene(0);
         }
 
-        
     }
 
 
-    
+    private bool canMove = true;
+    [SerializeField] private float dashTime = 0.5f;
+    [SerializeField] private float dashSpeed = 40f;
 
+    private IEnumerator Dash()
+    {
+        dashCharges--;
+        thisCollider.enabled = false;
+        canMove = false;
+        UpdateVelocity(this.transform.up, dashSpeed);
+        yield return new WaitForSeconds(dashTime);
+        thisCollider.enabled = true;
+        canMove = true;
+        yield return null;
+    }
+
+    private int dashCharges;
+    [SerializeField]
+    private int maxDashCharges;
+    public void GetCharge()
+    {
+        if(dashCharges < maxDashCharges)
+        {
+            dashCharges++;
+        }
+    }
+
+    
+    private bool shoulderHasBeenPressed = false; //Need to remove this!
     private void Update()
     {
         state = GamePad.GetState(player, GamePadDeadZone.Circular);
         //GamePad.GetState(playerIndex,);
         ClampPlayerToScreen();
+
+
+        if(state.Buttons.RightShoulder == ButtonState.Pressed && !shoulderHasBeenPressed)
+        {
+            shoulderHasBeenPressed = true;
+            ChangeColor();
+            
+        }
+        if (state.Buttons.RightShoulder == ButtonState.Released && shoulderHasBeenPressed)
+        {
+            shoulderHasBeenPressed = false;
+        }
+
+        if(canMove && !isInvulnerable)
+        {
+            AimAndShoot();
+        }
+        
     }
 
 
@@ -87,11 +136,6 @@ public class PlayerController : Ship
     private void Move() {
 
         UpdateMovementVector();
-
-        //if(Input.GetButton("SlowDown"))
-        //{
-        //    SlowMovement();
-        //}
 
         if (state.Triggers.Left > triggerDeadZone)
         {
@@ -147,16 +191,10 @@ public class PlayerController : Ship
 
     private void AimAndShoot()
     {
-
         if(state.ThumbSticks.Right.X != 0 || state.ThumbSticks.Right.Y != 0)
         {
             Aim();
-
-            //if(!weapon.isSwinging)
-            //{
-            //    SwingWeapon();
-            //}
-            
+            SwingWeapon();
         }
     }
 
@@ -179,47 +217,47 @@ public class PlayerController : Ship
     }
 
 
-
-
-
-
-    private float nextSwing;
-
     [SerializeField]
-    private float swingRate = 0.1f;
-
+    PlayerWeaponController playerWeapon;
     private void SwingWeapon()
     {
-        if (Time.time > nextSwing)
-        {
-            nextSwing = Time.time + swingRate;
-
-            //Swing
-        }
+        playerWeapon.TrySwingWeapon();
     }
+
+    private void ChangeColor()
+    {
+        playerWeapon.ChangeWeaponColor();
+    }
+
+    
 
 
     private float timeBeforeInvulnerableOff;
     [SerializeField]
     private float inVulnerableTime = 3f;
 
-    public override void HitShip(int bulletDamage)
+    public override void GetHit(int damage)
     {
+        
         timeBeforeInvulnerableOff = Time.time + inVulnerableTime;
-        base.HitShip(bulletDamage);
+        base.GetHit(damage);
         StartCoroutine("Invulnerable");
     }
 
 
     [SerializeField]
     private Collider2D thisCollider;
+    private bool isInvulnerable = false;
     private IEnumerator Invulnerable()
     {
+        isInvulnerable = true;
         thisCollider.enabled = false;
         yield return new WaitForSeconds(inVulnerableTime);
+        isInvulnerable = false;
         thisCollider.enabled = true;
         yield return null;
     }
+
 
     [SerializeField]
     private float analogDeadZone = 0.25f;

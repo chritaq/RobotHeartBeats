@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class EnemyController : Ship
 {
-
-
-    public override void HitShip(int bulletDamage)
+    public override void GetHit(int damage)
     {
-        base.HitShip(bulletDamage);
+        base.GetHit(damage);
         UpdateHealthUI();
     }
 
