@@ -30,7 +30,7 @@ MonoBehaviour:
   spinSpeedChangeRate: 0
   spinReversal: 1
   maxSpinSpeed: 0
-  fireRate: 0.05
+  fireRate: 0.08
   bulletSpeed: 5
   bulletSpeedChangeRate: 0
   bulletSpeedReversal: 0

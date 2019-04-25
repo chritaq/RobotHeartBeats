@@ -22,7 +22,7 @@ MonoBehaviour:
   patternTime: 5
   bulletType: {fileID: 7779344303148548401, guid: 83944191bd9d70a458e49bf1f53b46a6,
     type: 3}
-  bulletsPerArray: 4
+  bulletsPerArray: 2
   arraySpread: 180
   totalBulletsArray: 1
   totalArraySpread: 0
