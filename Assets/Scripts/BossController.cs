@@ -26,8 +26,8 @@ public class BossController : Ship
         thisCollider = this.GetComponent<Collider2D>();
         currentState = new BossInvulnerableState();
         currentState.Enter(this);
-        
 
+        UpdateHealthUI();
         UpdateStateUI(currentState.stateName);
     }
 
@@ -55,6 +55,11 @@ public class BossController : Ship
     {
         base.GetHit(damage);
         UpdateHealthUI();
+
+        currentState.Exit(this);
+        currentState = new BossDamagedState(); ;
+        currentState.Enter(this);
+        UpdateStateUI(currentState.stateName);
     }
 
 
@@ -88,14 +93,12 @@ public class BossController : Ship
 
     public void TurnOnInvulnerable()
     {
-        Debug.Log("Turned on invulnerable");
         thisCollider.enabled = false;
     }
 
 
     public void TurnOffInvulnerable()
     {
-        Debug.Log("Turned off invulnerable");
         thisCollider.enabled = true;
     }
 

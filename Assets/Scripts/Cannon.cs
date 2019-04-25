@@ -64,7 +64,6 @@ public class Cannon : MovingPart
         
         bulletClone[bulletIndex] = bulletPooled.GetComponent<Rigidbody2D>();
 
-        //bulletClone[bulletIndex] = Instantiate(bulletType, bulletSpawnPoint, spawnRotation);
         bulletClone[bulletIndex].velocity = transform.TransformDirection(bulletClone[bulletIndex].transform.up * bulletSpeed);
 
 

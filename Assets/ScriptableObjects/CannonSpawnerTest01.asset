@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d134c34093062488c558e89d6c0db2, type: 3}
   m_Name: CannonSpawnerTest01
   m_EditorClassIdentifier: 
+  name: PatternAttack
   patternAttackData:
   - pattern: {fileID: 11400000, guid: 78a33eaf6343be54f91aa9bea5081a50, type: 2}
     timeBeforeSpawn: 0

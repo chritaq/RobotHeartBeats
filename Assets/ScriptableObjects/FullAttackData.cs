@@ -3,9 +3,9 @@
 [System.Serializable]
 public class FullAttackData : object
 {
-    public PatternAttack patternAttack;
+    public Ability bossAbility;
     //public Ability ability;
-    public float timeBeforeAttack;
+    public float timeBeforeAbility;
     //public bool finnishAttack;
     //public float speedMultiplier;
 }

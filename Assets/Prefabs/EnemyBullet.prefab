@@ -16,7 +16,9 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0}
   bulletDamage: 1
+  bulletHealth: 4
   isOrange: 0
+  bulletColor: 
 --- !u!1001 &8137594144554919892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,6 +100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 26317214694095901, guid: ac3f714add9308241a773fd02ce8eb09,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3f714add9308241a773fd02ce8eb09, type: 3}

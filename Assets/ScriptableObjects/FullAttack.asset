@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FullAttack
   m_EditorClassIdentifier: 
   FullAttackData:
-  - patternAttack: {fileID: 11400000, guid: 2615af75ed99bd54e8e99da710b2b3a6, type: 2}
-    timeBeforeAttack: 0
-  - patternAttack: {fileID: 11400000, guid: 051fef1c7bbbd5e4a90b92836e5fb6b8, type: 2}
-    timeBeforeAttack: 5
+  - bossAbility: {fileID: 11400000, guid: 2615af75ed99bd54e8e99da710b2b3a6, type: 2}
+    timeBeforeAbility: 0
+  - bossAbility: {fileID: 11400000, guid: 051fef1c7bbbd5e4a90b92836e5fb6b8, type: 2}
+    timeBeforeAbility: 5

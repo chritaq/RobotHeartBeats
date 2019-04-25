@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CannonSpawner : MovingPart, IAbilityStartable
 {
@@ -8,10 +9,16 @@ public class CannonSpawner : MovingPart, IAbilityStartable
     private GameObject[] enemyCannonClone;
     [SerializeField] private GameObject enemyCannon;
 
-    private PatternAttack[] patternAttacks;
+    //private PatternAttack[] patternAttacks;
+
+    private PatternAttack tempPatternAttack;
+    private TeleportAbility tempTeleport;
+
+    private Ability[] abilities;
+
     [SerializeField] FullAttack fullAttack;
 
-    private float[] timesBeforeAttacks;
+    private float[] timesBeforeAbilities;
 
     private void Start()
     {
@@ -21,28 +28,71 @@ public class CannonSpawner : MovingPart, IAbilityStartable
         
     }
 
-    public void StartAbility()
+    public void SetupAbility()
     {
-        AddAttackArrayIndexes();
-        GetAttackData();
+        activeAbility = 0;
+        fullAttackFinished = false;
+        abilityFinished = true;
+        AddAbilityArrayIndexes();
+        GetAbilityData();
+        
 
         //StartCoroutine("FullAttackSpawner");
-        StartCoroutine("PatternAttackSpawner");
+        //AbilityStarter();
 
     }
 
-    private void AddAttackArrayIndexes()
+    private void AddAbilityArrayIndexes()
     {
-        patternAttacks = new PatternAttack[fullAttack.FullAttackData.Length];
-        timesBeforeAttacks = new float[fullAttack.FullAttackData.Length];
+        //patternAttacks = new PatternAttack[fullAttack.FullAttackData.Length];
+        //timesBeforeAttacks = new float[fullAttack.FullAttackData.Length];
+
+        abilities = new Ability[fullAttack.FullAttackData.Length];
+        timesBeforeAbilities = new float[fullAttack.FullAttackData.Length];
     }
 
-    private void GetAttackData()
+    private void GetAbilityData()
     {
         for (int i = 0; i < fullAttack.FullAttackData.Length; i++)
         {
-            patternAttacks[i] = fullAttack.FullAttackData[i].patternAttack;
-            timesBeforeAttacks[i] = fullAttack.FullAttackData[i].timeBeforeAttack;
+            abilities[i] = fullAttack.FullAttackData[i].bossAbility;
+            timesBeforeAbilities[i] = fullAttack.FullAttackData[i].timeBeforeAbility;
+        }
+
+    }
+
+
+    int activeAbility = 0;
+    private bool abilityFinished;
+    private bool fullAttackFinished;
+    public void AbilityStarter()
+    {
+        if(abilityFinished)
+        {
+            StartNextAbility();
+        }
+    }
+
+
+    private void StartNextAbility()
+    {
+        try
+        {
+            tempPatternAttack = (PatternAttack)abilities[activeAbility];
+            StartCoroutine("PatternAttackSpawner");
+        }
+        catch
+        {
+            try
+            {
+                tempTeleport = (TeleportAbility)abilities[activeAbility];
+                StartCoroutine("Teleport");
+                //Debug.Log("Teleported");
+            }
+            catch
+            {
+                Debug.Log("no ability worked");
+            }
         }
     }
 
@@ -77,42 +127,88 @@ public class CannonSpawner : MovingPart, IAbilityStartable
     //    yield return null;
     //}
 
-    private bool attackFinished;
+    
 
-    public bool CheckAttackFinished()
+    public bool CheckAbilityFinished()
     {
-        return attackFinished;
+        return abilityFinished;
     }
 
     private IEnumerator PatternAttackSpawner()
     {
-        attackFinished = false;
-        enemyCannonClone = new GameObject[patternAttacks[0].patternAttackData.Length];
+        abilityFinished = false;
+        enemyCannonClone = new GameObject[tempPatternAttack.patternAttackData.Length];
+
+        yield return new WaitForSeconds(timesBeforeAbilities[activeAbility]);
 
         //Goes through each pattern in the patternattack.
-        for (int j = 0; j < patternAttacks[0].patternAttackData.Length; j++)
+        for (int i = 0; i < tempPatternAttack.patternAttackData.Length; i++)
         {
 
-            yield return new WaitForSeconds(patternAttacks[0].patternAttackData[j].timeBeforeSpawn);
+            yield return new WaitForSeconds(tempPatternAttack.patternAttackData[i].timeBeforeSpawn);
 
-            SpawnCannonWithPattern(0, j);
+            SpawnCannonWithPattern(0, i);
 
             //Finishes the patternattack before starting the next attack if true.
-            if (patternAttacks[0].patternAttackData[j].finnishAttack)
+            if (tempPatternAttack.patternAttackData[i].finnishAttack)
             {
-                yield return new WaitForSeconds(patternAttacks[0].patternAttackData[j].pattern.patternTime);
+                yield return new WaitForSeconds(tempPatternAttack.patternAttackData[i].pattern.patternTime);
             }
 
         }
-        attackFinished = true;
+
+        
+
+        TryFinnishFullAttack();
+        activeAbility++;
+
         yield return null;
     }
 
 
     private void SpawnCannonWithPattern(int i, int j)
     {
-        enemyCannon.GetComponent<EnemyCannonNew>().pattern = patternAttacks[i].patternAttackData[j].pattern;
+        enemyCannon.GetComponent<EnemyCannonNew>().pattern = tempPatternAttack.patternAttackData[j].pattern;
         enemyCannonClone[j] = Instantiate(enemyCannon, this.transform);
+    }
+
+
+    private void TryFinnishFullAttack()
+    {
+        if (activeAbility == abilities.Length - 1)
+        {
+            fullAttackFinished = true;
+        }
+        else
+        {
+            abilityFinished = true;
+        }
+    }
+
+
+    public bool CheckFullAttackFinished()
+    {
+        return fullAttackFinished;
+    }
+
+
+
+    public void StopFullAttack()
+    {
+        fullAttackFinished = true;
+        StopAllCoroutines();
+        DestroyAllCannons();
+    }
+
+    private GameObject[] cannonsToDestroy;
+    private void DestroyAllCannons()
+    {
+        cannonsToDestroy = GameObject.FindGameObjectsWithTag("EnemyCannon");
+
+        for (var i = 0; i < cannonsToDestroy.Length; i++)
+        {
+            Destroy(cannonsToDestroy[i]);
+        }
     }
 
 }

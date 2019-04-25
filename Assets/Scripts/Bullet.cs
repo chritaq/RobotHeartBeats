@@ -9,7 +9,9 @@ public class Bullet : MovingPart, IHitable
     [SerializeField]
     protected int bulletDamage = 1;
     [SerializeField]
-    protected int bulletHealth = 4;
+    protected int bulletMaxHealth = 4;
+
+    protected int bulletHealth;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,8 +19,15 @@ public class Bullet : MovingPart, IHitable
         if (other.gameObject.tag == "Player")
         {
             other.SendMessage("GetHit", bulletDamage);
+            Debug.Log("Bullet Died");
             Die();
+            
         }
+    }
+
+    private void OnEnable()
+    {
+        bulletHealth = bulletMaxHealth;
     }
 
 
@@ -27,7 +36,7 @@ public class Bullet : MovingPart, IHitable
         this.gameObject.SetActive(false);
     }
 
-    public void GetHit(int damage)
+    public virtual void GetHit(int damage)
     {
         bulletHealth -= damage;
         if(bulletHealth <= 0)

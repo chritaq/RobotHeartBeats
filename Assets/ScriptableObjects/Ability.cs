@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IAbilityStartable
+public class Ability : ScriptableObject
 {
-    void SetupAbility();
+    public string name;
 }

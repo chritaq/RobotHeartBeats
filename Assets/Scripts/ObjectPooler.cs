@@ -14,8 +14,11 @@ public class ObjectPooler : MonoBehaviour
     public List<GameObject> pooledOrangeBullets;
     public GameObject orangeBulletsToPool;
 
-    //public List<GameObject> pooledBlueBullets;
-    //public GameObject blueBulletsToPool;
+    public List<GameObject> pooledBlueBullets;
+    public GameObject blueBulletsToPool;
+
+    public List<GameObject> pooledChargedBullets;
+    public GameObject chargedBulletsToPool;
 
     private void Awake()
     {
@@ -27,7 +30,8 @@ public class ObjectPooler : MonoBehaviour
     {
         pooledWhiteBullets = new List<GameObject>();
         pooledOrangeBullets = new List<GameObject>();
-        //pooledBlueBullets = new List<GameObject>();
+        pooledBlueBullets = new List<GameObject>();
+        pooledChargedBullets = new List<GameObject>();
 
         for (int i = 0; i < amountToPool; i++)
         {
@@ -39,9 +43,13 @@ public class ObjectPooler : MonoBehaviour
             orangeBulletObject.SetActive(false);
             pooledOrangeBullets.Add(orangeBulletObject);
 
-            //GameObject blueBulletObject = (GameObject)Instantiate(blueBulletsToPool, this.transform);
-            //blueBulletObject.SetActive(false);
-            //pooledBlueBullets.Add(blueBulletObject);
+            GameObject blueBulletObject = (GameObject)Instantiate(blueBulletsToPool, this.transform);
+            blueBulletObject.SetActive(false);
+            pooledBlueBullets.Add(blueBulletObject);
+
+            GameObject chargedBulletObject = (GameObject)Instantiate(chargedBulletsToPool, this.transform);
+            chargedBulletObject.SetActive(false);
+            pooledChargedBullets.Add(chargedBulletObject);
         }
     }
 
@@ -70,16 +78,27 @@ public class ObjectPooler : MonoBehaviour
             }
         }
 
-        //else if (bulletType.name == "EnemyBulletBlue")
-        //{
-        //    for (int i = 0; i < pooledBlueBullets.Count; i++)
-        //    {
-        //        if (!pooledBlueBullets[i].activeInHierarchy)
-        //        {
-        //            return pooledBlueBullets[i];
-        //        }
-        //    }
-        //}
+        else if (bulletType.name == "EnemyBulletBlue")
+        {
+            for (int i = 0; i < pooledBlueBullets.Count; i++)
+            {
+                if (!pooledBlueBullets[i].activeInHierarchy)
+                {
+                    return pooledBlueBullets[i];
+                }
+            }
+        }
+
+        else if (bulletType.name == "EnemyBulletCharged")
+        {
+            for (int i = 0; i < pooledChargedBullets.Count; i++)
+            {
+                if (!pooledChargedBullets[i].activeInHierarchy)
+                {
+                    return pooledChargedBullets[i];
+                }
+            }
+        }
 
         return null;
     }

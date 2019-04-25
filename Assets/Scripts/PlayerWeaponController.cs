@@ -35,8 +35,11 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (Time.time > nextSwing)
         {
-            nextSwing = Time.time + swingRate;
-            StartCoroutine("SwingWeapon");
+            if(orangeCollider.enabled == false && blueCollider.enabled == false)
+            {
+                StartCoroutine("SwingWeapon");
+                nextSwing = Time.time + swingRate;
+            }
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "PatternAttack", menuName = "PatternAttack")]
 
-public class PatternAttack : ScriptableObject
+public class PatternAttack : Ability
 {
     public PatternAttackData[] patternAttackData;
 }

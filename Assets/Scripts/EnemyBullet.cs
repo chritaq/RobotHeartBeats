@@ -6,18 +6,17 @@ public class EnemyBullet : Bullet
 {
     private bool isActive;
 
-    [SerializeField]
-
-    private bool isOrange = false;
-    [SerializeField]
-    private string bulletColor;
+    private FlashingFX flashingFx;
 
     void Start()
     {
-        //hitTag = "Player";
-        //if(isOrange) {
-        //    hitTag2 = "Absorber";
-        //}
+        flashingFx = GetComponent<FlashingFX>();
+    }
+
+    public override void GetHit(int damage)
+    {
+        StartCoroutine(flashingFx.OneTimeFlash());
+        base.GetHit(damage);
     }
 
 }

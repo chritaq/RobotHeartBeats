@@ -9,8 +9,6 @@ public class PlayerController : Ship
 
     private Camera cam;
 
-    
-
     [SerializeField]
     private int playerNumber;
 
@@ -62,6 +60,11 @@ public class PlayerController : Ship
             SceneManager.LoadScene(0);
         }
 
+        if (canMove && !isInvulnerable)
+        {
+            AimAndShoot();
+        }
+
     }
 
 
@@ -86,6 +89,7 @@ public class PlayerController : Ship
     private int maxDashCharges;
     public void GetCharge()
     {
+        Debug.Log("Charged Gotten");
         if(dashCharges < maxDashCharges)
         {
             dashCharges++;
@@ -112,10 +116,7 @@ public class PlayerController : Ship
             shoulderHasBeenPressed = false;
         }
 
-        if(canMove && !isInvulnerable)
-        {
-            AimAndShoot();
-        }
+        
         
     }
 

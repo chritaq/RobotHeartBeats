@@ -10,6 +10,8 @@ TagManager:
   - OrangeWeapon
   - BlueBullet
   - OrangeBullet
+  - EnemyCannon
+  - ChargedBullet
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class BossRestState : BossState
 
     public override void Enter(BossController bossController)
     {
+        stateName = "Resting";
         restTime = bossController.GetPlaceholderRestTime();
     }
 

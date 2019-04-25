@@ -2,31 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackState : BossState
+public class BossDamagedState : BossState
 {
+
+    
+    private float damagedStateTime = 2f;
+
     public override void Enter(BossController bossController)
     {
-        stateName = "Attack";
-        bossController.cannonSpawner.SetupAbility();
-        bossController.TurnOffInvulnerable();
+        stateName = "Damaged";
+        bossController.cannonSpawner.StopFullAttack();
+        bossController.TurnOnInvulnerable();
     }
 
     public override void Exit(BossController bossController)
     {
-        
-        
 
+        
     }
 
     public override BossState Update(BossController bossController, float t)
     {
-        
-        if (bossController.cannonSpawner.CheckFullAttackFinished())
+        damagedStateTime -= t;
+        if(damagedStateTime <= 0)
         {
-            return new BossRestState();
+            return new BossInvulnerableState();
         }
-        bossController.cannonSpawner.AbilityStarter();
         return null;
     }
-
 }

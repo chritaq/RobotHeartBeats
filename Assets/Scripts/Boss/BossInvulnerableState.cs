@@ -11,6 +11,7 @@ public class BossInvulnerableState : BossState
 
     public override void Enter(BossController bossController)
     {
+        stateName = "Invulnerable";
         savedStateTimer = bossController.savedStateTimer;
         //invulnerabilityTime = bossController.GetPlaceholderInvulnerableTime();
 
@@ -21,7 +22,7 @@ public class BossInvulnerableState : BossState
         invulnerabilityTime = savedStateTimer.CheckSavedStateTimer();
 
         bossController.TurnOnInvulnerable();
-        stateName = "Invulnerable";
+        
     }
 
     public override void Exit(BossController bossController)
