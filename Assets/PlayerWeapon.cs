@@ -20,7 +20,8 @@ public class PlayerWeapon : MonoBehaviour
           
         if(this.tag == "OrangeWeapon" && other.tag == "OrangeBullet" || this.tag == "BlueWeapon" && other.tag == "BlueBullet")
         {
-            other.SendMessage("GetHit", weaponDamage * 2);
+            other.SendMessage("GetHit", weaponDamage * 4);
+            
         }
         if ((this.tag == "BlueWeapon" && other.tag == "OrangeBullet") || (this.tag == "OrangeWeapon" && other.tag == "BlueBullet") || other.tag == "Enemy" || other.tag == "ChargedBullet")
         {

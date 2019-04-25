@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ef9b8f1f265e142b2351fc6ff5ce00, type: 3}
   m_Name: PatternTest03
   m_EditorClassIdentifier: 
-  everyOtherOrange: 4
+  everyOtherOrange: 0
+  orangeBulletsBeforeChange: 1
+  blueBulletsBeforeChange: 0
+  whiteBulletsBeforeChange: 0
+  chargedBulletsBeforeChange: 0
   bulletsPerFire: 4
   rotationAmount: 1
   patternTime: 5

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ship : MovingPart, IHitable
 {
@@ -19,6 +20,7 @@ public class Ship : MovingPart, IHitable
 
     private void Kill()
     {
+        SceneManager.LoadScene(0);
         Destroy(this.gameObject);
     }
     

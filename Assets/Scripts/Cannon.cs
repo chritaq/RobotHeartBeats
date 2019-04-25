@@ -51,7 +51,7 @@ public class Cannon : MovingPart
 
 
     
-    protected void SpawnBullet(int bulletIndex, Rigidbody2D bulletType, Quaternion spawnRotation)
+    public virtual void SpawnBullet(int bulletIndex, Rigidbody2D bulletType, Quaternion spawnRotation)
     {
 
         GameObject bulletPooled = ObjectPooler.sharedInstance.GetPooledObject(bulletType);

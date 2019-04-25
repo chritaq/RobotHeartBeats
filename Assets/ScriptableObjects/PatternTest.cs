@@ -12,6 +12,10 @@ public class PatternTest : ScriptableObject
 
     //public float fireRate;
     public int everyOtherOrange;
+    public int orangeBulletsBeforeChange;
+    public int blueBulletsBeforeChange;
+    public int whiteBulletsBeforeChange;
+    public int chargedBulletsBeforeChange;
 
     public int bulletsPerFire;
     public float rotationAmount;

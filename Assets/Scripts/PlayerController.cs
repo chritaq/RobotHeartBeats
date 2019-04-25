@@ -15,13 +15,16 @@ public class PlayerController : Ship
     PlayerIndex player;
     GamePadState state;
 
+    private FlashingFX flashingFX;
+
     private Vector2 stickInput;
 
     void Start()
     {
         cam = Camera.main;
+        flashingFX = GetComponent<FlashingFX>();
         //originalFireRate = fireRate;
-        if(playerNumber == 1)
+        if (playerNumber == 1)
         {
             player = PlayerIndex.One;
         }
@@ -241,6 +244,7 @@ public class PlayerController : Ship
     {
         
         timeBeforeInvulnerableOff = Time.time + inVulnerableTime;
+        AudioManager.instance.PlayPlayerDamaged();
         base.GetHit(damage);
         StartCoroutine("Invulnerable");
     }
@@ -253,9 +257,13 @@ public class PlayerController : Ship
     {
         isInvulnerable = true;
         thisCollider.enabled = false;
+        flashingFX.StartConstantFlash();
+
+
         yield return new WaitForSeconds(inVulnerableTime);
         isInvulnerable = false;
         thisCollider.enabled = true;
+        flashingFX.StopAllFlash();
         yield return null;
     }
 

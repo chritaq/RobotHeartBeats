@@ -37,6 +37,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             if(orangeCollider.enabled == false && blueCollider.enabled == false)
             {
+                AudioManager.instance.PlayWeaponSwing();
                 StartCoroutine("SwingWeapon");
                 nextSwing = Time.time + swingRate;
             }

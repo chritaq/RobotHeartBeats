@@ -12,6 +12,7 @@ public class BossTeleportState : BossState
         teleportTime = bossController.bossTeleport.GetTeleportTime();
         bossController.TurnOnInvulnerable();
         bossController.bossTeleport.TeleportStart();
+        
     }
 
     public override void Exit(BossController bossController)

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 75e8b4f63a8cf544d90d56d215cc0579, type: 3}
-  m_Color: {r: 0.56, g: 0.5772551, b: 1, a: 1}
+  m_Color: {r: 0.38431373, g: 0.09019608, b: 0.32620075, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -151,6 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantFlashRate: 0.08
   oneTimeFlashTime: 0.17
-  constantFlashColor: {r: 1, g: 0.8201983, b: 0.56078434, a: 1}
+  constantFlashColor: {r: 1, g: 1, b: 1, a: 1}
   oneTimeFlashColor: {r: 1, g: 1, b: 1, a: 1}
   constantFlash: 1

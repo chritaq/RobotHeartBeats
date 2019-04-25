@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 613944334}
   - component: {fileID: 613944335}
   - component: {fileID: 613944336}
+  - component: {fileID: 613944337}
   m_Layer: 0
   m_Name: OrangeWeapon
-  m_TagString: Untagged
+  m_TagString: OrangeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 613944333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1538891685}
   m_RootOrder: 0
@@ -68,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: cced30212e2f28f428420413188cb812, type: 3}
   m_Color: {r: 1, g: 0.7064719, b: 0, a: 1}
   m_FlipX: 0
@@ -104,8 +105,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.4, y: 1.4}
   m_EdgeRadius: 0
+--- !u!114 &613944337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613944333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48c45425a5092c4d8910607a6cd7c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1354585806
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +130,10 @@ GameObject:
   - component: {fileID: 1354585808}
   - component: {fileID: 1354585807}
   - component: {fileID: 1354585809}
+  - component: {fileID: 948733478}
   m_Layer: 0
   m_Name: BlueWeapon
-  m_TagString: Untagged
+  m_TagString: BlueWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 1354585806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1538891685}
   m_RootOrder: 1
@@ -174,7 +188,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: cced30212e2f28f428420413188cb812, type: 3}
   m_Color: {r: 0, g: 0.0323627, b: 1, a: 1}
   m_FlipX: 0
@@ -210,8 +224,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.4, y: 1.4}
   m_EdgeRadius: 0
+--- !u!114 &948733478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354585806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48c45425a5092c4d8910607a6cd7c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1538891683
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538891683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 613944334}
@@ -258,8 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 1
-  swingTime: 0.2
-  swingRate: 0.25
+  swingTime: 0.1
+  swingRate: 0.17
   orangeCollider: {fileID: 613944336}
   blueCollider: {fileID: 1354585809}
   orangeSpriteRenderer: {fileID: 613944335}
@@ -356,6 +382,7 @@ GameObject:
   - component: {fileID: 5083992890060990659}
   - component: {fileID: 5083992890060990658}
   - component: {fileID: 5083992890060990686}
+  - component: {fileID: 448079265}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -397,6 +424,9 @@ MonoBehaviour:
   health: 3
   playerNumber: 1
   triggerDeadZone: 0.1
+  dashTime: 0.04
+  dashSpeed: 150
+  maxDashCharges: 1
   colliderGraphics: {fileID: 5083992888706044938}
   slowDownSpeed: 10
   playerWeapon: {fileID: 1538891684}
@@ -413,7 +443,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -488,3 +518,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &448079265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083992890060990657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaf971cb46088c40966e1f95cffae93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

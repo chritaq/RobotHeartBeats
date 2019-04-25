@@ -69,4 +69,15 @@ public class FlashingFX : MonoBehaviour
 
         yield return null;
     }
+
+    public void StartConstantFlash()
+    {
+        StartCoroutine("ConstantFlash");
+    }
+
+    public void StopAllFlash()
+    {
+        spriteRenderer.color = originalColor;
+        StopAllCoroutines();
+    }
 }

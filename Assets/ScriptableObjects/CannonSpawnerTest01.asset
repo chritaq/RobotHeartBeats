@@ -22,7 +22,7 @@ MonoBehaviour:
     timeBeforeSpawn: 2
     finnishAttack: 1
     speedMultiplier: 0
-  - pattern: {fileID: 11400000, guid: 78a33eaf6343be54f91aa9bea5081a50, type: 2}
+  - pattern: {fileID: 11400000, guid: 7d5c10b3c60615342b00e946a38c8b44, type: 2}
     timeBeforeSpawn: 2
     finnishAttack: 0
     speedMultiplier: 0

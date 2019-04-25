@@ -1,12 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCannonNew : Cannon
 {
 
+    private int orangeBulletsBeforeChange;
+    private int whiteBulletsBeforeChange;
+    private int blueBulletsBeforeChange;
+    private int chargedBulletsBeforeChange;
+
+    private int orangeBulletsBeforeChangeCounter;
+    private int whiteBulletsBeforeChangeCounter;
+    private int blueBulletsBeforeChangeCounter;
+    private int chargedBulletsBeforeChangeCounter;
+
+    private int bulletChangeCounter;
+
+    private enum BulletType { Orange, White, Blue, Charged }
+    BulletType activeBulletType;
+
     public PatternTest pattern;
     [SerializeField] private Rigidbody2D orangeBullet;
+    [SerializeField] private Rigidbody2D whiteBullet;
+    [SerializeField] private Rigidbody2D blueBullet;
+    [SerializeField] private Rigidbody2D chargedBullet;
     [SerializeField] private Rigidbody2D bulletType;
     //flytta denna till PatternPattern? Ska kunna ställas in där.
     private float patternTime; 
@@ -33,6 +52,20 @@ public class EnemyCannonNew : Cannon
 
     void Start()
     {
+        //Fulkod, skriv om hela skottvals-systemet!:
+        orangeBulletsBeforeChange = pattern.orangeBulletsBeforeChange;
+        whiteBulletsBeforeChange = pattern.whiteBulletsBeforeChange;
+        blueBulletsBeforeChange = pattern.blueBulletsBeforeChange;
+        chargedBulletsBeforeChange = pattern.chargedBulletsBeforeChange;
+
+        orangeBulletsBeforeChangeCounter = pattern.orangeBulletsBeforeChange;
+        whiteBulletsBeforeChangeCounter = pattern.whiteBulletsBeforeChange;
+        blueBulletsBeforeChangeCounter = pattern.blueBulletsBeforeChange;
+        chargedBulletsBeforeChangeCounter = pattern.chargedBulletsBeforeChange;
+
+        ChooseActiveBulletType();
+
+
         patternTime = pattern.patternTime + Time.time;
         everyOtherOrange = pattern.everyOtherOrange;
         bulletType = pattern.bulletType;
@@ -61,6 +94,29 @@ public class EnemyCannonNew : Cannon
         yOffset = pattern.yOffset;
     }
 
+    private void ChooseActiveBulletType()
+    {
+        if (orangeBulletsBeforeChangeCounter != 0)
+        {
+            activeBulletType = BulletType.Orange;
+        }
+        else if (whiteBulletsBeforeChangeCounter != 0)
+        {
+            activeBulletType = BulletType.White;
+        }
+        else if (blueBulletsBeforeChangeCounter != 0)
+        {
+            activeBulletType = BulletType.Blue;
+        }
+        else if (chargedBulletsBeforeChangeCounter != 0)
+        {
+            activeBulletType = BulletType.Charged;
+        }
+        else
+        {
+            ResetBulletCounters();
+        }
+    }
 
     void Update()
     {
@@ -101,13 +157,74 @@ public class EnemyCannonNew : Cannon
         {
             SetBulletCloneAmount(bulletsPerArray);
 
-            TrySetBulletsToOrange();
+            //TrySetBulletsToOrange();
 
             SpawnAndRotateBullets();
 
             //Borde förklara vad detta gör.
             spawnRotationInDegrees = totalArraySpread - bulletsArraySpread;
         }
+    }
+
+    public override void SpawnBullet(int bulletIndex, Rigidbody2D bulletType, Quaternion spawnRotation)
+    {
+        ChooseBulletType();
+        base.SpawnBullet(bulletIndex, bulletTypeToSpawn, spawnRotation);
+    }
+
+
+    
+    private void ChooseBulletType()
+    {
+
+        if(activeBulletType == BulletType.Orange)
+        {
+            orangeBulletsBeforeChangeCounter--;
+            bulletTypeToSpawn = orangeBullet;
+            if(orangeBulletsBeforeChangeCounter == 0)
+            {
+                ChooseActiveBulletType();
+            }
+        }
+
+        else if (activeBulletType == BulletType.White)
+        {
+            whiteBulletsBeforeChangeCounter--;
+            bulletTypeToSpawn = whiteBullet;
+            if (whiteBulletsBeforeChangeCounter == 0)
+            {
+                ChooseActiveBulletType();
+            }
+        }
+
+        else if (activeBulletType == BulletType.Blue)
+        {
+            blueBulletsBeforeChangeCounter--;
+            bulletTypeToSpawn = blueBullet;
+            if (blueBulletsBeforeChangeCounter == 0)
+            {
+                ChooseActiveBulletType();
+            }
+        }
+
+        else if (activeBulletType == BulletType.Charged)
+        {
+            chargedBulletsBeforeChangeCounter--;
+            bulletTypeToSpawn = chargedBullet;
+            if(chargedBulletsBeforeChangeCounter == 0)
+            {
+                ChooseActiveBulletType();
+            }
+        }
+    }
+
+    private void ResetBulletCounters()
+    {
+        orangeBulletsBeforeChangeCounter = orangeBulletsBeforeChange;
+        whiteBulletsBeforeChangeCounter = whiteBulletsBeforeChange;
+        blueBulletsBeforeChangeCounter = blueBulletsBeforeChange;
+        chargedBulletsBeforeChangeCounter = chargedBulletsBeforeChange;
+
     }
 
 

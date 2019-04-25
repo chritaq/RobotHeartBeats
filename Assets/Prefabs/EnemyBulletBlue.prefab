@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 75e8b4f63a8cf544d90d56d215cc0579, type: 3}
-  m_Color: {r: 0, g: 0.03731489, b: 1, a: 1}
+  m_Color: {r: 0.09019608, g: 0.38431376, b: 0.33333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constantFlashRate: 0.08
-  oneTimeFlashTime: 0.15
-  constantFlashColor: {r: 0.33599997, g: 0.36203942, b: 1, a: 1}
+  oneTimeFlashTime: 0.1
+  constantFlashColor: {r: 0.09371429, g: 0.4, b: 0.34742856, a: 1}
   oneTimeFlashColor: {r: 1, g: 1, b: 1, a: 1}
   constantFlash: 1
 --- !u!58 &8155141568096814218
@@ -153,4 +153,4 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0}
   bulletDamage: 1
-  bulletMaxHealth: 4
+  bulletMaxHealth: 8

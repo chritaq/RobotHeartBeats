@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: New Test Pattern 1
   m_EditorClassIdentifier: 
   everyOtherOrange: 0
+  orangeBulletsBeforeChange: 0
+  blueBulletsBeforeChange: 0
+  whiteBulletsBeforeChange: 1
+  chargedBulletsBeforeChange: 0
   bulletsPerFire: 0
   rotationAmount: -0.1
   patternTime: 0.3
   bulletType: {fileID: 7779344303148548401, guid: 83944191bd9d70a458e49bf1f53b46a6,
     type: 3}
-  bulletsPerArray: 45
+  bulletsPerArray: 10
   arraySpread: 360
   totalBulletsArray: 1
   totalArraySpread: 0
@@ -26,7 +30,7 @@ MonoBehaviour:
   spinSpeedChangeRate: 0
   spinReversal: 0
   maxSpinSpeed: 0
-  fireRate: 0.1
+  fireRate: 0.05
   bulletSpeed: 10
   bulletSpeedChangeRate: 0
   bulletSpeedReversal: 0

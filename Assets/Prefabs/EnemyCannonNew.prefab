@@ -54,6 +54,12 @@ MonoBehaviour:
   pattern: {fileID: 0}
   orangeBullet: {fileID: 9038761659983189214, guid: 986a5c50377a5494c894bb91ea8887a3,
     type: 3}
+  whiteBullet: {fileID: 7779344303148548401, guid: 83944191bd9d70a458e49bf1f53b46a6,
+    type: 3}
+  blueBullet: {fileID: 7668187594829667954, guid: a7c0e01f635f71e47a3eec428e1f59bb,
+    type: 3}
+  chargedBullet: {fileID: 7489501596183414560, guid: a5d20896c0f3cd04090bcf4252a247f6,
+    type: 3}
   bulletType: {fileID: 7779344303148548401, guid: 83944191bd9d70a458e49bf1f53b46a6,
     type: 3}
 --- !u!212 &698137075491613862

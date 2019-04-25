@@ -27,6 +27,8 @@ public class BossController : Ship
         currentState = new BossInvulnerableState();
         currentState.Enter(this);
 
+        flashingFx = GetComponent<FlashingFX>();
+
         UpdateHealthUI();
         UpdateStateUI(currentState.stateName);
     }
@@ -76,7 +78,7 @@ public class BossController : Ship
     private Text stateText;
     private void UpdateStateUI(string currentStateName)
     {
-        stateText.text = "Enemy State: " + currentStateName;
+        //stateText.text = "Enemy State: " + currentStateName;
     }
 
 
@@ -127,4 +129,6 @@ public class BossController : Ship
     public CannonSpawner cannonSpawner;
     public BossTeleport bossTeleport;
     public SavedStateTimer savedStateTimer;
+    public FlashingFX flashingFx;
+    public ColorChange colorChange;
 }

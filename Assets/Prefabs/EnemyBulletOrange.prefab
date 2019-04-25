@@ -16,7 +16,7 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0}
   bulletDamage: 1
-  bulletMaxHealth: 4
+  bulletMaxHealth: 8
 --- !u!114 &4235777255145486716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,8 +30,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constantFlashRate: 0.08
-  oneTimeFlashTime: 0.17
-  constantFlashColor: {r: 1, g: 0.76188236, b: 0.33999997, a: 1}
+  oneTimeFlashTime: 0.1
+  constantFlashColor: {r: 1, g: 0.33864257, b: 0.16000003, a: 1}
   oneTimeFlashColor: {r: 1, g: 1, b: 1, a: 1}
   constantFlash: 1
 --- !u!1001 &7380101781799940667
@@ -109,17 +109,17 @@ PrefabInstance:
     - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.81568635
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.6392157
+      value: 0.25882354
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.10980393
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}

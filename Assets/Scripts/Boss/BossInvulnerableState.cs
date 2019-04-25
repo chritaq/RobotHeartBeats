@@ -22,12 +22,12 @@ public class BossInvulnerableState : BossState
         invulnerabilityTime = savedStateTimer.CheckSavedStateTimer();
 
         bossController.TurnOnInvulnerable();
-        
+        bossController.colorChange.ChangeToSecondColor();
     }
 
     public override void Exit(BossController bossController)
     {
-        
+        bossController.colorChange.ChangeToOriginalColor();
     }
 
 
