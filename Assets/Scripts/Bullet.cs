@@ -41,6 +41,7 @@ public class Bullet : MovingPart, IHitable
         bulletHealth -= damage;
         if(bulletHealth <= 0)
         {
+            //AudioManager.instance.PlayBulletDestroyed();
             Die();
         }
     }

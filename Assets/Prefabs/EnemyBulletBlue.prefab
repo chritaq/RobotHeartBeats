@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantFlashRate: 0.08
   oneTimeFlashTime: 0.1
-  constantFlashColor: {r: 0.09371429, g: 0.4, b: 0.34742856, a: 1}
+  constantFlashColor: {r: 0.12494116, g: 0.53099996, b: 0.46332347, a: 1}
   oneTimeFlashColor: {r: 1, g: 1, b: 1, a: 1}
   constantFlash: 1
 --- !u!58 &8155141568096814218

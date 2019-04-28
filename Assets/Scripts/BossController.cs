@@ -70,7 +70,7 @@ public class BossController : Ship
     private Text healthText;
     private void UpdateHealthUI()
     {
-        healthText.text = "Enemy Health is: " + health;
+        healthText.text = "Boss: " + health;
     }
 
 
@@ -126,7 +126,7 @@ public class BossController : Ship
     }
 
 
-    public CannonSpawner cannonSpawner;
+    public AbilitySpawner cannonSpawner;
     public BossTeleport bossTeleport;
     public SavedStateTimer savedStateTimer;
     public FlashingFX flashingFx;

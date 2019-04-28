@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using XInputDotNetPure;
 
 public class PlayerController : Ship
@@ -15,14 +16,20 @@ public class PlayerController : Ship
     PlayerIndex player;
     GamePadState state;
 
-    private FlashingFX flashingFX;
+    [SerializeField]
+    private FlashingFX flashingHurtFX;
+
+    [SerializeField]
+    private FlashingFX flashingChargeFX;
+
 
     private Vector2 stickInput;
 
     void Start()
     {
+        UpdateHealthUI();
         cam = Camera.main;
-        flashingFX = GetComponent<FlashingFX>();
+        //flashingHurtFX = GetComponent<FlashingFX>();
         //originalFireRate = fireRate;
         if (playerNumber == 1)
         {
@@ -42,6 +49,14 @@ public class PlayerController : Ship
         }
     }
 
+    //Temp! Should be updated to healthbar!
+    [SerializeField]
+    private Text healthText;
+    private void UpdateHealthUI()
+    {
+        healthText.text = "P1: " + health;
+    }
+
 
     [SerializeField]
     private float triggerDeadZone = 0.1f;
@@ -51,6 +66,8 @@ public class PlayerController : Ship
 
         if (state.Buttons.X == ButtonState.Pressed && isInvulnerable == false && dashCharges > 0)
         {
+            flashingChargeFX.StopAllFlash();
+            AudioManager.instance.PlayPlayerDash();
             StartCoroutine("Dash");
         }
 
@@ -60,7 +77,7 @@ public class PlayerController : Ship
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         if (canMove && !isInvulnerable)
@@ -92,6 +109,12 @@ public class PlayerController : Ship
     private int maxDashCharges;
     public void GetCharge()
     {
+        if (flashingHurtFX.constantFlash)
+        {
+            flashingHurtFX.StopAllFlash();
+        }
+        flashingChargeFX.StartConstantFlash();
+        AudioManager.instance.PlayGetCharge();
         Debug.Log("Charged Gotten");
         if(dashCharges < maxDashCharges)
         {
@@ -242,11 +265,11 @@ public class PlayerController : Ship
 
     public override void GetHit(int damage)
     {
-        
         timeBeforeInvulnerableOff = Time.time + inVulnerableTime;
         AudioManager.instance.PlayPlayerDamaged();
         base.GetHit(damage);
         StartCoroutine("Invulnerable");
+        UpdateHealthUI();
     }
 
 
@@ -257,13 +280,17 @@ public class PlayerController : Ship
     {
         isInvulnerable = true;
         thisCollider.enabled = false;
-        flashingFX.StartConstantFlash();
+        if(flashingChargeFX.constantFlash)
+        {
+            flashingChargeFX.StopAllFlash();
+        }
+        flashingHurtFX.StartConstantFlash();
 
 
         yield return new WaitForSeconds(inVulnerableTime);
         isInvulnerable = false;
         thisCollider.enabled = true;
-        flashingFX.StopAllFlash();
+        flashingHurtFX.StopAllFlash();
         yield return null;
     }
 

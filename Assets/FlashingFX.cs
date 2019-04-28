@@ -18,7 +18,7 @@ public class FlashingFX : MonoBehaviour
     private Color oneTimeFlashColor;
 
     [SerializeField]
-    private bool constantFlash;
+    public bool constantFlash;
 
     //private bool isFlashing;
 

@@ -15,8 +15,8 @@ MonoBehaviour:
   everyOtherOrange: 0
   orangeBulletsBeforeChange: 0
   blueBulletsBeforeChange: 0
-  whiteBulletsBeforeChange: 1
-  chargedBulletsBeforeChange: 0
+  whiteBulletsBeforeChange: 7
+  chargedBulletsBeforeChange: 1
   bulletsPerFire: 0
   rotationAmount: -0.1
   patternTime: 0.3

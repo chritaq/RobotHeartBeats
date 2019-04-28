@@ -21,13 +21,15 @@ public class PlayerWeapon : MonoBehaviour
         if(this.tag == "OrangeWeapon" && other.tag == "OrangeBullet" || this.tag == "BlueWeapon" && other.tag == "BlueBullet")
         {
             other.SendMessage("GetHit", weaponDamage * 4);
-            
+            AudioManager.instance.PlayBulletDamagedHard();
+            AudioManager.instance.PlayBulletDamaged();
         }
         if ((this.tag == "BlueWeapon" && other.tag == "OrangeBullet") || (this.tag == "OrangeWeapon" && other.tag == "BlueBullet") || other.tag == "Enemy" || other.tag == "ChargedBullet")
         {
             other.SendMessage("GetHit", weaponDamage);
+            AudioManager.instance.PlayBulletDamaged();
 
-            if(other.tag == "ChargedBullet")
+            if (other.tag == "ChargedBullet")
             {
                 playerController.GetCharge();
             }

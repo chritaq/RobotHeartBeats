@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class AudioManager : MonoBehaviour
     private AudioSource bulletDamaged;
 
     [SerializeField]
+    private AudioSource bulletDamagedHard;
+
+    [SerializeField]
     private AudioSource bulletDestroyed;
 
     [SerializeField]
@@ -21,6 +25,15 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField]
     private AudioSource playerDamaged;
+
+    [SerializeField]
+    private AudioSource getCharge;
+
+    [SerializeField]
+    private AudioSource changeWeapon;
+
+    [SerializeField]
+    private AudioSource playerDash;
 
     private void Awake()
     {
@@ -44,6 +57,11 @@ public class AudioManager : MonoBehaviour
         bulletDamaged.Play();
     }
 
+    public void PlayBulletDamagedHard()
+    {
+        bulletDamagedHard.Play();
+    }
+
     public void PlayBulletDestroyed()
     {
         bulletDestroyed.Play();
@@ -58,4 +76,20 @@ public class AudioManager : MonoBehaviour
     {
         weaponSwing.Play();
     }
+
+    public void PlayGetCharge()
+    {
+        getCharge.Play();
+    }
+
+    public void PlayChangeWeapon()
+    {
+        changeWeapon.Play();
+    }
+
+    public void PlayPlayerDash()
+    {
+        playerDash.Play();
+    }
+
 }

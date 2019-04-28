@@ -61,4 +61,20 @@ public class BossTeleport : MonoBehaviour
     {
         return teleportTime;
     }
+
+
+    private float teleportTimeAbility;
+    public void StartTeleportAbility(float teleportTime)
+    {
+        teleportTimeAbility = teleportTime;
+        StartCoroutine("Teleport");
+    }
+
+    private IEnumerator Teleport()
+    {
+        TeleportStart();
+        yield return new WaitForSeconds(teleportTimeAbility);
+        TeleportEnd();
+        yield return null;
+    }
 }

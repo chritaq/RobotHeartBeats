@@ -20,7 +20,7 @@ public class Ship : MovingPart, IHitable
 
     private void Kill()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Destroy(this.gameObject);
     }
     

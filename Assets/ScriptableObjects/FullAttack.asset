@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FullAttack
   m_EditorClassIdentifier: 
   FullAttackData:
-  - bossAbility: {fileID: 11400000, guid: 2615af75ed99bd54e8e99da710b2b3a6, type: 2}
+  - bossAbility: {fileID: 11400000, guid: 940e9fabb50db6a4b87e9b0135c3b96e, type: 2}
     timeBeforeAbility: 0
   - bossAbility: {fileID: 11400000, guid: 051fef1c7bbbd5e4a90b92836e5fb6b8, type: 2}
-    timeBeforeAbility: 5
+    timeBeforeAbility: 3
+  - bossAbility: {fileID: 11400000, guid: 2615af75ed99bd54e8e99da710b2b3a6, type: 2}
+    timeBeforeAbility: 3

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CannonSpawner : MovingPart, IAbilityStartable
+public class AbilitySpawner : MovingPart, IAbilityStartable
 {
 
     private GameObject[] enemyCannonClone;
@@ -70,6 +70,7 @@ public class CannonSpawner : MovingPart, IAbilityStartable
         if(abilityFinished)
         {
             StartNextAbility();
+            Debug.Log("Started ability");
         }
     }
 
@@ -87,7 +88,7 @@ public class CannonSpawner : MovingPart, IAbilityStartable
             {
                 tempTeleport = (TeleportAbility)abilities[activeAbility];
                 StartCoroutine("Teleport");
-                //Debug.Log("Teleported");
+                
             }
             catch
             {
@@ -147,7 +148,7 @@ public class CannonSpawner : MovingPart, IAbilityStartable
 
             yield return new WaitForSeconds(tempPatternAttack.patternAttackData[i].timeBeforeSpawn);
 
-            SpawnCannonWithPattern(0, i);
+            SpawnCannonWithPattern(i);
 
             //Finishes the patternattack before starting the next attack if true.
             if (tempPatternAttack.patternAttackData[i].finnishAttack)
@@ -157,8 +158,6 @@ public class CannonSpawner : MovingPart, IAbilityStartable
 
         }
 
-        
-
         TryFinnishFullAttack();
         activeAbility++;
 
@@ -166,10 +165,10 @@ public class CannonSpawner : MovingPart, IAbilityStartable
     }
 
 
-    private void SpawnCannonWithPattern(int i, int j)
+    private void SpawnCannonWithPattern(int i)
     {
-        enemyCannon.GetComponent<EnemyCannonNew>().pattern = tempPatternAttack.patternAttackData[j].pattern;
-        enemyCannonClone[j] = Instantiate(enemyCannon, this.transform);
+        enemyCannon.GetComponent<EnemyCannonNew>().pattern = tempPatternAttack.patternAttackData[i].pattern;
+        enemyCannonClone[i] = Instantiate(enemyCannon, this.transform);
     }
 
 
@@ -211,4 +210,21 @@ public class CannonSpawner : MovingPart, IAbilityStartable
         }
     }
 
+    [SerializeField]
+    BossTeleport bossTeleport;
+    private IEnumerator Teleport()
+    {
+        abilityFinished = false;
+        for (int i = 0; i < tempTeleport.timesToTeleport; i++)
+        {
+            bossTeleport.StartTeleportAbility(tempTeleport.timeForEachTeleport);
+            yield return new WaitForSeconds(tempTeleport.timeForEachTeleport);
+            yield return new WaitForSeconds(tempTeleport.timeBetweenTeleports);
+        }
+
+        TryFinnishFullAttack();
+        activeAbility++;
+
+        yield return null;
+    }
 }

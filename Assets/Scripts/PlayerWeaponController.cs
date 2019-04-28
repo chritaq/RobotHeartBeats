@@ -85,7 +85,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void ChangeWeaponColor()
     {
-        
+        AudioManager.instance.PlayChangeWeapon();
         if (activeColor == SwordColor.orange)
         {
             activeColor = SwordColor.blue;
