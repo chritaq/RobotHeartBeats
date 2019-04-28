@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d26fa9164098c24c9169e9f19ea2423, type: 3}
-  m_Name: FastTeleport
+  m_Name: TeleportAbility
   m_EditorClassIdentifier: 
   name: 
   timeForEachTeleport: 0.5
   timeBetweenTeleports: 1
-  timesToTeleport: 3
+  timesToTeleport: 1

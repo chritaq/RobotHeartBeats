@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class AbilitySpawner : MovingPart, IAbilityStartable
+public class FullAttackStarter : MovingPart, IAbilityStartable
 {
 
     private GameObject[] enemyCannonClone;
@@ -16,7 +16,7 @@ public class AbilitySpawner : MovingPart, IAbilityStartable
 
     private Ability[] abilities;
 
-    [SerializeField] FullAttack fullAttack;
+    public FullAttack fullAttack;
 
     private float[] timesBeforeAbilities;
 

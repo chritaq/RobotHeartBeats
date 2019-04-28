@@ -23,6 +23,12 @@ public class BossController : Ship
 
     private void Start()
     {
+        health = 0;
+        for(int i = 0; i < phaseController.phases.Length; i++)
+        {
+            health += phaseController.phases[i].phaseData.healthDuringPhase;
+        }
+         
         thisCollider = this.GetComponent<Collider2D>();
         currentState = new BossInvulnerableState();
         currentState.Enter(this);
@@ -125,8 +131,8 @@ public class BossController : Ship
         }
     }
 
-
-    public AbilitySpawner cannonSpawner;
+    public PhaseController phaseController;
+    public FullAttackStarter fullAttackStarter;
     public BossTeleport bossTeleport;
     public SavedStateTimer savedStateTimer;
     public FlashingFX flashingFx;

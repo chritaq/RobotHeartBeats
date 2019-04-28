@@ -12,10 +12,12 @@ public class BossDamagedState : BossState
     {
         AudioManager.instance.PlayBossDamaged();
         stateName = "Damaged";
-        bossController.cannonSpawner.StopFullAttack();
+        bossController.fullAttackStarter.StopFullAttack();
         bossController.TurnOnInvulnerable();
 
         bossController.flashingFx.StartConstantFlash();
+
+        bossController.phaseController.DamagePhaseHealth();
     }
 
     public override void Exit(BossController bossController)
@@ -29,6 +31,15 @@ public class BossDamagedState : BossState
         damagedStateTime -= t;
         if(damagedStateTime <= 0)
         {
+            //Go To changePhaseState if phaseHealth == 0! 
+            if(bossController.phaseController.phaseHealth[bossController.phaseController.activePhase] == 0)
+            {
+                //return new BossPhaseChangeState;
+
+                //Temp code:
+                bossController.phaseController.UpdateActivePhase();
+            }
+
             return new BossInvulnerableState();
         }
         return null;

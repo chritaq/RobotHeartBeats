@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f50b14a431ba8343a397a34d77650d5, type: 3}
-  m_Name: PhaseTest
+  m_Name: Phase
   m_EditorClassIdentifier: 
   phaseData:
     fullAttacks:
-    - {fileID: 11400000, guid: 8897e40b821abcf4cbba06df75b45dd2, type: 2}
-    - {fileID: 11400000, guid: 86e6a6d4b2235e047b272bd14395c3cb, type: 2}
+    - {fileID: 11400000, guid: d5b8e05582438e5478a27a8a15172382, type: 2}
     healthDuringPhase: 2
     invulnerableTimeBetweenAttacks: 0

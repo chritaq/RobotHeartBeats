@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 309939009}
   - component: {fileID: 309939010}
   m_Layer: 0
-  m_Name: AbilitySpawner
+  m_Name: FullAttackStarter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1094,7 +1094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &699250773
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2246,6 +2246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activePhase: 0
+  activeAttack: 0
+  phases:
+  - {fileID: 11400000, guid: 969f837ceabe96f46ab0f23ae4c92532, type: 2}
+  - {fileID: 11400000, guid: 1bb5962ce16448744a6f9f18d4d1dc79, type: 2}
+  phaseHealth: 
 --- !u!1 &1937820457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,14 +2594,15 @@ MonoBehaviour:
   rb: {fileID: 2090970384}
   speed: 0
   direction: {x: 0, y: 0}
-  health: 5
+  health: 0
   placeholderInvulnerableTime: 5
   placeholderRestTime: 5
   maxDistanceFromPlayer: 5
   healthText: {fileID: 1250902800}
   stateText: {fileID: 1125595805}
   player: {fileID: 1741563000277914085}
-  cannonSpawner: {fileID: 309939010}
+  phaseController: {fileID: 1867728272}
+  fullAttackStarter: {fileID: 309939010}
   bossTeleport: {fileID: 1254884260}
   savedStateTimer: {fileID: 1673428850}
   flashingFx: {fileID: 2090970386}
