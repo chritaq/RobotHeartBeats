@@ -309,4 +309,18 @@ public class PlayerController : Ship
         //    thisStickInput = thisStickInput.normalized * ((thisStickInput.magnitude - analogDeadZone) / (1 - analogDeadZone));
         return thisStickInput;
     }
+
+
+    public bool hasCharges()
+    {
+        if(dashCharges > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

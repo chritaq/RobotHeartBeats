@@ -12,7 +12,7 @@ public class TutorialController : MonoBehaviour
 
     private Vector2 stickInput;
 
-    private enum TutorialState {Movement, Slicing, ChangeWeapon, HitCorrectBullet, ChargedBullet, Dash, Complete};
+    private enum TutorialState {Movement, Slicing, ChangeWeapon, HitCorrectBullet, ChargedBullet, Dash, SlowDown, Complete };
 
     private TutorialState tutorialState;
 
@@ -20,6 +20,9 @@ public class TutorialController : MonoBehaviour
 
     [SerializeField]
     private Text tutorialText;
+
+    [SerializeField]
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,21 @@ public class TutorialController : MonoBehaviour
                 HitCorrectBulletCounter();
             }
             
+        }
+
+        if (tutorialState == TutorialState.Dash)
+        {
+            SpawnChargedBullets();
+            if (state.Buttons.X == ButtonState.Pressed && playerController.hasCharges())
+            {
+                DashCounter();
+            }
+            
+        }
+
+        if(tutorialState == TutorialState.SlowDown && state.Triggers.Left > 0)
+        {
+            SlowDownCounter();
         }
 
         if (tutorialState == TutorialState.Complete)
@@ -133,8 +151,32 @@ public class TutorialController : MonoBehaviour
         slicingCounter--;
         if (slicingCounter <= 0)
         {
+            tutorialState = TutorialState.Dash;
+            tutorialStateName = "Destroy Charged Bullets to gain a Dash Charge. Use on X.";
+        }
+    }
+
+    
+    float dashingCounter = 10;
+    private void DashCounter()
+    {
+        dashingCounter--;
+        if (dashingCounter <= 0)
+        {
+            tutorialState = TutorialState.SlowDown;
+            tutorialStateName = "Hold Left Trigger to slow down";
+            
+        }
+    }
+
+    float slowDownCounter = 500;
+    private void SlowDownCounter()
+    {
+        slowDownCounter--;
+        if (slowDownCounter <= 0)
+        {
             tutorialState = TutorialState.Complete;
-            tutorialStateName = "Tutorial Complete!";
+            tutorialStateName = "Tutorial Complete";
         }
     }
 
@@ -154,21 +196,35 @@ public class TutorialController : MonoBehaviour
             Instantiate(blueBullet, new Vector3(10, 25, 0), Quaternion.identity);
             nextShoot = Time.time + shootRate;
         }
-
-
         
+    }
+
+    [SerializeField]
+    private Transform chargedBullet;
+
+    private void SpawnChargedBullets()
+    {
+        if (Time.time > nextShoot)
+        {
+            Instantiate(chargedBullet, new Vector3(0, 25, 0), Quaternion.identity);
+            nextShoot = Time.time + shootRate;
+        }
+
     }
 
 
 
     float completeCounter = 750;
+    private bool completePlayed = false;
+
     private void ChangeCompleteCounter()
     {
         completeCounter--;
-        if (completeCounter <= 0)
+        if (completeCounter <= 0 && !completePlayed)
         {
 
             StartCoroutine("SceneChange");
+            completePlayed = true;
         }
     }
 
@@ -184,6 +240,7 @@ public class TutorialController : MonoBehaviour
         sceneTransition.StartTransition();
         while (sceneTransition.isPlaying)
         {
+            Debug.Log("is waiting");
             yield return new WaitForSeconds(0.1f);
         }
         //ChangeScene;

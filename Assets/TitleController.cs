@@ -48,6 +48,7 @@ public class TitleController : MonoBehaviour
         while(sceneTransition.isPlaying)
         {
             yield return new WaitForSeconds(0.1f);
+            
         }
         //ChangeScene;
         Debug.Log("ChangeScnee");
