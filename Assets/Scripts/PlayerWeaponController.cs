@@ -17,17 +17,20 @@ public class PlayerWeaponController : MonoBehaviour
     private Collider2D orangeCollider;
     [SerializeField]
     private Collider2D blueCollider;
+
+    private ColorChange colorChange;
     
     private enum SwordColor {orange, blue};
     private SwordColor activeColor;
 
     private void Start()
     {
+        colorChange = GetComponentInParent<ColorChange>();
         activeColor = SwordColor.orange;
         orangeCollider.enabled = false;
         blueCollider.enabled = false;
-        orangeSpriteRenderer.enabled = false;
-        blueSpriteRenderer.enabled = false;
+        //orangeSpriteRenderer.enabled = false;
+        //blueSpriteRenderer.enabled = false;
     }
 
 
@@ -58,16 +61,23 @@ public class PlayerWeaponController : MonoBehaviour
     private SpriteRenderer orangeSpriteRenderer;
     [SerializeField]
     private SpriteRenderer blueSpriteRenderer;
+    [SerializeField]
+    private Animator orangeAnimator;
+    [SerializeField]
+    private Animator blueAnimator;
+
     private void TurnOnWeapon()
     {
         if(activeColor == SwordColor.orange)
         {
-            orangeSpriteRenderer.enabled = true;
+            //orangeSpriteRenderer.enabled = true;
+            orangeAnimator.SetTrigger("TriggerSwooshAnimation");
             orangeCollider.enabled = true;
         }
         if (activeColor == SwordColor.blue)
         {
-            blueSpriteRenderer.enabled = true;
+            //blueSpriteRenderer.enabled = true;
+            blueAnimator.SetTrigger("TriggerSwooshAnimation");
             blueCollider.enabled = true;
         }
 
@@ -76,9 +86,9 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void TurnOffWeapon()
     {
-        orangeSpriteRenderer.enabled = false;
+        //orangeSpriteRenderer.enabled = false;
         orangeCollider.enabled = false;
-        blueSpriteRenderer.enabled = false;
+        //blueSpriteRenderer.enabled = false;
         blueCollider.enabled = false;
     }
 
@@ -89,10 +99,12 @@ public class PlayerWeaponController : MonoBehaviour
         if (activeColor == SwordColor.orange)
         {
             activeColor = SwordColor.blue;
+            colorChange.ChangeToSecondColor();
         }
         else if (activeColor == SwordColor.blue)
         {
             activeColor = SwordColor.orange;
+            colorChange.ChangeToOriginalColor();
         }
     }
 

@@ -31,7 +31,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantFlashRate: 0.08
   oneTimeFlashTime: 0.1
-  constantFlashColor: {r: 1, g: 0.33864257, b: 0.16000003, a: 1}
+  constantFlashColor: {r: 1, g: 0.7623696, b: 0.357, a: 1}
   oneTimeFlashColor: {r: 1, g: 1, b: 1, a: 1}
   constantFlash: 1
 --- !u!1001 &7380101781799940667
@@ -51,20 +51,15 @@ PrefabInstance:
       propertyPath: m_TagString
       value: OrangeBullet
       objectReference: {fileID: 0}
-    - target: {fileID: 26317214694095901, guid: ac3f714add9308241a773fd02ce8eb09,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497001, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.936501
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497001, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.73
+      value: 3.760497
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497001, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
@@ -113,49 +108,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0.81568635
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.25882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.10980393
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
-        type: 3}
-      propertyPath: m_Sprite
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: f63fc844fedf9364f857be26c1d85505,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 8c51ba94109d4bc498f4507eb01aef5d, type: 2}
     - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_SortingOrder
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702496999, guid: ac3f714add9308241a773fd02ce8eb09,
+    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      propertyPath: m_Color.r
+      value: 0.93725497
       objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702496999, guid: ac3f714add9308241a773fd02ce8eb09,
+    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      propertyPath: m_Color.g
+      value: 0.62352943
       objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702496999, guid: ac3f714add9308241a773fd02ce8eb09,
+    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
-      propertyPath: m_Size.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953228183702496999, guid: ac3f714add9308241a773fd02ce8eb09,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.1
+      propertyPath: m_Color.b
+      value: 0.098039225
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3f714add9308241a773fd02ce8eb09, type: 3}

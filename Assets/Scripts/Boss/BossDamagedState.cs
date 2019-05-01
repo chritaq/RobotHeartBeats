@@ -22,6 +22,7 @@ public class BossDamagedState : BossState
 
     public override void Exit(BossController bossController)
     {
+        bossController.healthText.text = "";
         bossController.flashingFx.StopAllFlash();
 
     }

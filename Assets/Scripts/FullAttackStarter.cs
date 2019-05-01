@@ -70,7 +70,6 @@ public class FullAttackStarter : MovingPart, IAbilityStartable
         if(abilityFinished)
         {
             StartNextAbility();
-            Debug.Log("Started ability");
         }
     }
 

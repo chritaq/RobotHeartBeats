@@ -23,13 +23,22 @@ public class BossTeleportState : BossState
 
     public override BossState Update(BossController bossController, float t)
     {
-        teleportTime -= t;
+        if(!bossController.bossTeleport.animationRunning)
+        {
+            teleportTime -= t;
+        }
+        
         if (teleportTime <= 0)
         {
+
             bossController.bossTeleport.TeleportEnd();
-            //Change this so it goes to last state
+
             return new BossInvulnerableState();
+
+            //Change this so it goes to last state
+            
         }
+        
 
         return null;
     }

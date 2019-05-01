@@ -16,9 +16,7 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0}
   bulletDamage: 1
-  bulletHealth: 4
-  isOrange: 0
-  bulletColor: 
+  bulletMaxHealth: 4
 --- !u!1001 &8137594144554919892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30,6 +28,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 26317214694095901, guid: ac3f714add9308241a773fd02ce8eb09,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1953228183702497001, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
@@ -91,6 +94,21 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.83921576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.83921576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953228183702497000, guid: ac3f714add9308241a773fd02ce8eb09,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.83921576
+      objectReference: {fileID: 0}
     - target: {fileID: 1953228183702496999, guid: ac3f714add9308241a773fd02ce8eb09,
         type: 3}
       propertyPath: m_Size.x
@@ -100,11 +118,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 26317214694095901, guid: ac3f714add9308241a773fd02ce8eb09,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3f714add9308241a773fd02ce8eb09, type: 3}

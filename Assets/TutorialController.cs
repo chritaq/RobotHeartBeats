@@ -67,7 +67,7 @@ public class TutorialController : MonoBehaviour
             ChangeCompleteCounter();
         }
 
-        Debug.Log(tutorialStateName);
+        //Debug.Log(tutorialStateName);
     }
 
     private float moveHorizontal;
@@ -167,8 +167,28 @@ public class TutorialController : MonoBehaviour
         completeCounter--;
         if (completeCounter <= 0)
         {
-            
-            SceneManager.LoadScene(1);
+
+            StartCoroutine("SceneChange");
         }
+    }
+
+    [SerializeField]
+    private SceneTransition sceneTransition;
+
+    private float transitionTime = 2f;
+
+    private IEnumerator SceneChange()
+    {
+        //startSound.Play();
+        yield return new WaitForSeconds(transitionTime);
+        sceneTransition.StartTransition();
+        while (sceneTransition.isPlaying)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        //ChangeScene;
+        Debug.Log("ChangeScnee");
+        SceneManager.LoadScene(2);
+        yield return null;
     }
 }

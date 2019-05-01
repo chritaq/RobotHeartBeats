@@ -73,10 +73,10 @@ public class BossController : Ship
 
     //Temp! Should be updated to healthbar!
     [SerializeField]
-    private Text healthText;
+    public Text healthText;
     private void UpdateHealthUI()
     {
-        healthText.text = "Boss: " + health;
+        healthText.text = "BOSS " + health + "HP";
     }
 
 
@@ -84,7 +84,7 @@ public class BossController : Ship
     private Text stateText;
     private void UpdateStateUI(string currentStateName)
     {
-        //stateText.text = "Enemy State: " + currentStateName;
+        stateText.text = "Enemy State: " + currentStateName;
     }
 
 

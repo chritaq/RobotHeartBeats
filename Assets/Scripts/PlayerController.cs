@@ -27,7 +27,8 @@ public class PlayerController : Ship
 
     void Start()
     {
-        UpdateHealthUI();
+
+        healthText.text = "";
         cam = Camera.main;
         //flashingHurtFX = GetComponent<FlashingFX>();
         //originalFireRate = fireRate;
@@ -51,10 +52,10 @@ public class PlayerController : Ship
 
     //Temp! Should be updated to healthbar!
     [SerializeField]
-    private Text healthText;
+    public Text healthText;
     private void UpdateHealthUI()
     {
-        healthText.text = "P1: " + health;
+        healthText.text = "PLAYER " + health + "HP";
     }
 
 
@@ -115,7 +116,6 @@ public class PlayerController : Ship
         }
         flashingChargeFX.StartConstantFlash();
         AudioManager.instance.PlayGetCharge();
-        Debug.Log("Charged Gotten");
         if(dashCharges < maxDashCharges)
         {
             dashCharges++;
@@ -269,7 +269,7 @@ public class PlayerController : Ship
         AudioManager.instance.PlayPlayerDamaged();
         base.GetHit(damage);
         StartCoroutine("Invulnerable");
-        UpdateHealthUI();
+        //UpdateHealthUI();
     }
 
 
@@ -278,6 +278,7 @@ public class PlayerController : Ship
     private bool isInvulnerable = false;
     private IEnumerator Invulnerable()
     {
+        UpdateHealthUI();
         isInvulnerable = true;
         thisCollider.enabled = false;
         if(flashingChargeFX.constantFlash)
@@ -291,6 +292,7 @@ public class PlayerController : Ship
         isInvulnerable = false;
         thisCollider.enabled = true;
         flashingHurtFX.StopAllFlash();
+        healthText.text = "";
         yield return null;
     }
 
