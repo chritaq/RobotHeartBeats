@@ -323,4 +323,15 @@ public class PlayerController : Ship
         }
     }
 
+
+    [SerializeField]
+    private GameOverController gameOverController;
+
+    public override void Kill()
+    {
+        gameOverController.StartGameOverTransition();
+        base.Kill();
+        //UpdateHealthUI();
+    }
+
 }

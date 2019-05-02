@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d134c34093062488c558e89d6c0db2, type: 3}
+  m_Name: PA02__OneColorAtTheTime
+  m_EditorClassIdentifier: 
+  name: 
+  patternAttackData:
+  - pattern: {fileID: 11400000, guid: cbb04006b2e10c846b5b89739fe6673d, type: 2}
+    timeBeforeSpawn: 0
+    finnishAttack: 1
+    speedMultiplier: 0
+  - pattern: {fileID: 11400000, guid: 6c34fc869aa9f2743a713d996862d71d, type: 2}
+    timeBeforeSpawn: 1
+    finnishAttack: 1
+    speedMultiplier: 0
+  - pattern: {fileID: 11400000, guid: 6d8b50cec269c9246ab117774240a1be, type: 2}
+    timeBeforeSpawn: 1
+    finnishAttack: 1
+    speedMultiplier: 0

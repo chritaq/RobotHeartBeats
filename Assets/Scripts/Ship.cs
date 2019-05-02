@@ -18,9 +18,9 @@ public class Ship : MovingPart, IHitable
     }
 
 
-    private void Kill()
+    public virtual void Kill()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(2);
         Destroy(this.gameObject);
     }
     

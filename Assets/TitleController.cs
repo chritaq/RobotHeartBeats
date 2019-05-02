@@ -15,9 +15,13 @@ public class TitleController : MonoBehaviour
     [SerializeField]
     private TextFlash pressStartFlash;
 
+    private bool startWaitDone = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = PlayerIndex.One;
+        StartCoroutine("StartWait");
         player = PlayerIndex.One;
     }
 
@@ -27,7 +31,7 @@ public class TitleController : MonoBehaviour
     void Update()
     {
         state = GamePad.GetState(player, GamePadDeadZone.Circular);
-        if(state.Buttons.Start == ButtonState.Pressed && !hasPressed)
+        if(state.Buttons.Start == ButtonState.Pressed && !hasPressed && startWaitDone)
         {
             hasPressed = true;
             StartCoroutine("SceneChange");
@@ -56,5 +60,10 @@ public class TitleController : MonoBehaviour
         yield return null;
     }
 
+    private IEnumerator StartWait()
+    {
+        yield return new WaitForSeconds(1f);
+        startWaitDone = true;
+    }
     
 }

@@ -115,6 +115,7 @@ public class EnemyCannonNew : Cannon
         else
         {
             ResetBulletCounters();
+            ChooseActiveBulletType();
         }
     }
 

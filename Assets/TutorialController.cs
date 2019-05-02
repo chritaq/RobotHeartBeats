@@ -110,7 +110,6 @@ public class TutorialController : MonoBehaviour
     private void MovementCounter ()
     {
         movementCounter--;
-        Debug.Log(movementCounter);
         if(movementCounter <= 0)
         {
             tutorialState = TutorialState.Slicing;

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FastTeleport
   m_EditorClassIdentifier: 
   name: 
-  timeForEachTeleport: 0.5
-  timeBetweenTeleports: 1
-  timesToTeleport: 3
+  timeForEachTeleport: 0.1
+  timeBetweenTeleports: 0.5
+  timesToTeleport: 2

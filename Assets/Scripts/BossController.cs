@@ -116,7 +116,11 @@ public class BossController : Ship
     public float DistanceFromPlayer()
     {
         //Renskriv!
-        return Vector2.Distance(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(player.transform.position.x, player.transform.position.y));
+        if(player != null)
+        {
+            return Vector2.Distance(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(player.transform.position.x, player.transform.position.y));
+        }
+        return 0f;
     }
 
     public bool playerWithinMaxDistance()
@@ -129,6 +133,16 @@ public class BossController : Ship
         {
             return false;
         }
+    }
+
+    [SerializeField]
+    private WinScreenController winScreenController;
+
+    public override void Kill()
+    {
+        winScreenController.StartWinTransition();
+        base.Kill();
+        //UpdateHealthUI();
     }
 
     public PhaseController phaseController;

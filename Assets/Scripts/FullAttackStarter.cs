@@ -213,6 +213,7 @@ public class FullAttackStarter : MovingPart, IAbilityStartable
     BossTeleport bossTeleport;
     private IEnumerator Teleport()
     {
+        yield return new WaitForSeconds(timesBeforeAbilities[activeAbility]);
         abilityFinished = false;
         for (int i = 0; i < tempTeleport.timesToTeleport; i++)
         {

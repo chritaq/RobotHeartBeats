@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f50b14a431ba8343a397a34d77650d5, type: 3}
+  m_Name: Phase_EasyMid
+  m_EditorClassIdentifier: 
+  phaseData:
+    fullAttacks:
+    - {fileID: 11400000, guid: 9ce131bff0b564c449425b078665f7f7, type: 2}
+    - {fileID: 11400000, guid: a801eb9b4c652be4a8875434c5df6028, type: 2}
+    healthDuringPhase: 3
+    invulnerableTimeBetweenAttacks: 0
