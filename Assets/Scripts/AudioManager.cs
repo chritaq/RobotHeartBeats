@@ -21,6 +21,9 @@ public class AudioManager : MonoBehaviour
     private AudioSource bulletDestroyed;
 
     [SerializeField]
+    private AudioSource bulletDestroyed2;
+
+    [SerializeField]
     private AudioSource weaponSwing;
 
     [SerializeField]
@@ -55,6 +58,7 @@ public class AudioManager : MonoBehaviour
     public void PlayBulletDamaged()
     {
         bulletDamaged.Play();
+        //bulletDestroyed.Play();
     }
 
     public void PlayBulletDamagedHard()
@@ -64,7 +68,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBulletDestroyed()
     {
-        bulletDestroyed.Play();
+        bulletDestroyed2.Play();
     }
 
     public void PlayPlayerDamaged()

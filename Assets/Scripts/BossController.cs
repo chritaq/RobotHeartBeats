@@ -35,7 +35,7 @@ public class BossController : Ship
 
         flashingFx = GetComponent<FlashingFX>();
 
-        UpdateHealthUI();
+        //UpdateHealthUI();
         UpdateStateUI(currentState.stateName);
     }
 

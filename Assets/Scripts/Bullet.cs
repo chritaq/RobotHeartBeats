@@ -46,8 +46,10 @@ public class Bullet : MovingPart, IHitable
         }
     }
 
+
     private void Die()
     {
+        AudioManager.instance.PlayBulletDestroyed();
         this.gameObject.SetActive(false);
     }
 }

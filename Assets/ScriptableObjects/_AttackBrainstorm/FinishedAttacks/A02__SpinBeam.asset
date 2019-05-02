@@ -15,3 +15,5 @@ MonoBehaviour:
   FullAttackData:
   - bossAbility: {fileID: 11400000, guid: 31ae32f26a32bfe4abbbab9fd4bccb75, type: 2}
     timeBeforeAbility: 0
+  - bossAbility: {fileID: 11400000, guid: 940e9fabb50db6a4b87e9b0135c3b96e, type: 2}
+    timeBeforeAbility: 0

@@ -36,6 +36,11 @@ public class TitleController : MonoBehaviour
             hasPressed = true;
             StartCoroutine("SceneChange");
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     [SerializeField]

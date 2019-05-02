@@ -77,9 +77,7 @@ public class PlayerController : Ship
             Move();
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
-            SceneManager.LoadScene(1);
-        }
+        
 
         if (canMove && !isInvulnerable)
         {
@@ -130,8 +128,16 @@ public class PlayerController : Ship
         //GamePad.GetState(playerIndex,);
         ClampPlayerToScreen();
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
 
-        if(state.Buttons.RightShoulder == ButtonState.Pressed && !shoulderHasBeenPressed)
+        if (state.Buttons.RightShoulder == ButtonState.Pressed && !shoulderHasBeenPressed)
         {
             shoulderHasBeenPressed = true;
             ChangeColor();
@@ -263,8 +269,11 @@ public class PlayerController : Ship
     [SerializeField]
     private float inVulnerableTime = 3f;
 
+    
+
     public override void GetHit(int damage)
     {
+        
         timeBeforeInvulnerableOff = Time.time + inVulnerableTime;
         AudioManager.instance.PlayPlayerDamaged();
         base.GetHit(damage);
