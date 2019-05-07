@@ -30,17 +30,26 @@ public class Bullet : MovingPart, IHitable
         bulletHealth = bulletMaxHealth;
     }
 
+    [SerializeField]
+    private GameObject particleFX;
+    private GameObject particleInstance;
 
     private void OnBecameInvisible()
     {
         this.gameObject.SetActive(false);
     }
 
+    private float deathPosX;
+    private float deathPosY;
     public virtual void GetHit(int damage)
     {
         bulletHealth -= damage;
         if(bulletHealth <= 0)
         {
+            //deathPosX = this.transform.position.x;
+            //deathPosY = this.transform.position.y;
+            //Debug.Log();
+            particleInstance = Instantiate(particleFX, this.transform.position, this.transform.rotation);
             //AudioManager.instance.PlayBulletDestroyed();
             Die();
         }
@@ -51,5 +60,10 @@ public class Bullet : MovingPart, IHitable
     {
         AudioManager.instance.PlayBulletDestroyed();
         this.gameObject.SetActive(false);
+    }
+
+    private void PlayParticleEffect()
+    {
+        //particleInstance = Instantiate(particleFX, this.transform);
     }
 }

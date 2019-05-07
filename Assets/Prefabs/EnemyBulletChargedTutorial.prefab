@@ -154,3 +154,5 @@ MonoBehaviour:
   direction: {x: 0, y: -1}
   bulletDamage: 0
   bulletMaxHealth: 1
+  particleFX: {fileID: 6134857336315433496, guid: a32c252e064fcc8448809a772c9a4f00,
+    type: 3}
