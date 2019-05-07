@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Attack_EasySpinAttack
   m_EditorClassIdentifier: 
   FullAttackData:
-  - bossAbility: {fileID: 11400000, guid: 1fb3495ed31262744abeb83dc352bdc5, type: 2}
-    timeBeforeAbility: 0
   - bossAbility: {fileID: 11400000, guid: dbdb4189412539644ada4c9c6ac85956, type: 2}
     timeBeforeAbility: 0

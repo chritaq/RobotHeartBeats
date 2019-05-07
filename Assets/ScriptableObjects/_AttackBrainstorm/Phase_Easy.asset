@@ -15,5 +15,6 @@ MonoBehaviour:
   phaseData:
     fullAttacks:
     - {fileID: 11400000, guid: 5ab6179ec00c3ee49a4c86d1240bb6a9, type: 2}
+    - {fileID: 11400000, guid: 3086ba03dc87ed24a9edb64f3fc29a15, type: 2}
     healthDuringPhase: 3
     invulnerableTimeBetweenAttacks: 0

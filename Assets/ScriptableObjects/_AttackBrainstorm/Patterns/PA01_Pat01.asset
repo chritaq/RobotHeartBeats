@@ -21,7 +21,7 @@ MonoBehaviour:
   rotationAmount: 0
   patternTime: 10
   bulletType: {fileID: 0}
-  bulletsPerArray: 5
+  bulletsPerArray: 4
   arraySpread: 360
   totalBulletsArray: 1
   totalArraySpread: 0

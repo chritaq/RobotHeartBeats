@@ -20,7 +20,7 @@ public class PlayerController : Ship
     private FlashingFX flashingHurtFX;
 
     [SerializeField]
-    private FlashingFX flashingChargeFX;
+    private FlashingTrailFX flashingChargeFX;
 
 
     private Vector2 stickInput;

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: A03_Tel
   m_EditorClassIdentifier: 
   name: 
-  timeForEachTeleport: 0.2
-  timeBetweenTeleports: 0
-  timesToTeleport: 1
+  timeForEachTeleport: 1
+  timeBetweenTeleports: 0.1
+  timesToTeleport: 2

@@ -20,6 +20,8 @@ public class TutorialController : MonoBehaviour
 
     [SerializeField]
     private Text tutorialText;
+    [SerializeField]
+    private Text counterText;
 
     [SerializeField]
     private PlayerController playerController;
@@ -27,15 +29,24 @@ public class TutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        counterText.text = "";
         tutorialState = TutorialState.Movement;
         tutorialStateName = "Move with Left Stick";
 
         player = PlayerIndex.One;
     }
 
+
+
+    private bool rightShoulderHasBeenPressed = false;
+    private bool xHasBeenPressed = false;
+
     // Update is called once per frame
     void Update()
     {
+        
+
+
         tutorialText.text = tutorialStateName;
         state = GamePad.GetState(player, GamePadDeadZone.Circular);
         CheckMovement();
@@ -50,9 +61,20 @@ public class TutorialController : MonoBehaviour
             SlicingCounter();
         }
 
-        if(tutorialState == TutorialState.ChangeWeapon && state.Buttons.RightShoulder == ButtonState.Pressed)
+        
+
+        if (tutorialState == TutorialState.ChangeWeapon)
         {
-            ChangeWeaponCounter();
+            if (!rightShoulderHasBeenPressed && state.Buttons.RightShoulder == ButtonState.Pressed)
+            {
+                ChangeWeaponCounter();
+                
+                rightShoulderHasBeenPressed = true;
+            }
+            if (rightShoulderHasBeenPressed && state.Buttons.RightShoulder == ButtonState.Released)
+            {
+                rightShoulderHasBeenPressed = false;
+            }
         }
 
         if(tutorialState == TutorialState.HitCorrectBullet)
@@ -68,11 +90,22 @@ public class TutorialController : MonoBehaviour
         if (tutorialState == TutorialState.Dash)
         {
             SpawnChargedBullets();
-            if (state.Buttons.X == ButtonState.Pressed && playerController.hasCharges())
+            //if (state.Buttons.X == ButtonState.Pressed && playerController.hasCharges())
+            //{
+            //    DashCounter();
+            //}
+
+            if (!xHasBeenPressed && state.Buttons.X == ButtonState.Pressed && playerController.hasCharges())
             {
                 DashCounter();
+                xHasBeenPressed = true;
             }
-            
+
+            if (xHasBeenPressed && state.Buttons.X == ButtonState.Released)
+            {
+                xHasBeenPressed = false;
+            }
+
         }
 
         if(tutorialState == TutorialState.SlowDown && state.Triggers.Left > 0)
@@ -106,34 +139,40 @@ public class TutorialController : MonoBehaviour
         sliceVertical = state.ThumbSticks.Right.Y;
     }
 
-    float movementCounter = 500;
+    float movementCounter = 400;
     private void MovementCounter ()
     {
         movementCounter--;
-        if(movementCounter <= 0)
+        counterText.text = "" + movementCounter;
+        if (movementCounter <= 0)
         {
             tutorialState = TutorialState.Slicing;
             tutorialStateName = "Slice with right stick";
+            counterText.text = "";
         }
     }
 
-    float slicingCounter = 500;
+    float slicingCounter = 400;
     private void SlicingCounter()
     {
         slicingCounter--;
+        counterText.text = "" + slicingCounter;
         if (slicingCounter <= 0)
         {
+            counterText.text = "";
             tutorialState = TutorialState.ChangeWeapon;
             tutorialStateName = "Change weapon on Right Bumper";
         }
     }
 
-    float changeWeaponCounter = 100;
+    float changeWeaponCounter = 4;
     private void ChangeWeaponCounter()
     {
         changeWeaponCounter--;
+        counterText.text = "" + changeWeaponCounter;
         if (changeWeaponCounter <= 0)
         {
+            counterText.text = "";
             tutorialState = TutorialState.HitCorrectBullet;
             tutorialStateName = "Hit with correct color for extra damage";
             ResetSlicingCounter();
@@ -148,32 +187,38 @@ public class TutorialController : MonoBehaviour
     private void HitCorrectBulletCounter()
     {
         slicingCounter--;
+        //counterText.text = "" + slicingCounter;
         if (slicingCounter <= 0)
         {
+            //counterText.text = "";
             tutorialState = TutorialState.Dash;
-            tutorialStateName = "Destroy Charged Bullets to gain a Dash Charge. Use on X.";
+            tutorialStateName = "Hit Charged Bullets to gain a Dash-Charge. Use on X to Dash.";
         }
     }
 
     
-    float dashingCounter = 10;
+    float dashingCounter = 4;
     private void DashCounter()
     {
         dashingCounter--;
+        counterText.text = "" + dashingCounter;
         if (dashingCounter <= 0)
         {
+            counterText.text = "";
             tutorialState = TutorialState.SlowDown;
             tutorialStateName = "Hold Left Trigger to slow down";
             
         }
     }
 
-    float slowDownCounter = 500;
+    float slowDownCounter = 400;
     private void SlowDownCounter()
     {
         slowDownCounter--;
+        counterText.text = "" + slowDownCounter;
         if (slowDownCounter <= 0)
         {
+            counterText.text = "";
             tutorialState = TutorialState.Complete;
             tutorialStateName = "Tutorial Complete";
         }
@@ -213,7 +258,7 @@ public class TutorialController : MonoBehaviour
 
 
 
-    float completeCounter = 750;
+    float completeCounter = 300;
     private bool completePlayed = false;
 
     private void ChangeCompleteCounter()

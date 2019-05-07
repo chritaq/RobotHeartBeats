@@ -28,11 +28,14 @@ public class Cannon : MovingPart
     protected Rigidbody2D bulletTypeToSpawn;
     protected float bulletsArraySpread;
     protected int bulletsPerArray;
+    protected int bulletPerArraySpreadFix;
 
     protected void SpawnAndRotateBullets()
     {
         //Gör antagligen inte det jag hade tänkt:
         bulletSpawnPoint = new Vector2(direction.x + transform.position.x, direction.y + transform.position.y);
+
+        
 
         for (int i = 0; i < bulletsPerArray; i++)
         {
@@ -45,7 +48,7 @@ public class Cannon : MovingPart
             SpawnBullet(i, bulletTypeToSpawn, spawnRotation);
 
             //Sets the rotation for the next bullet in the array
-            spawnRotationInDegrees += bulletsArraySpread / (bulletsPerArray - 1);
+            spawnRotationInDegrees += bulletsArraySpread / (bulletPerArraySpreadFix - 1);
         }
     }
 

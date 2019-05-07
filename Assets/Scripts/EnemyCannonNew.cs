@@ -92,6 +92,13 @@ public class EnemyCannonNew : Cannon
 
         xOffset = pattern.xOffset;
         yOffset = pattern.yOffset;
+
+        bulletPerArraySpreadFix = bulletsPerArray;
+
+        if (bulletsArraySpread == 360)
+        {
+             bulletPerArraySpreadFix += 1;
+        }
     }
 
     private void ChooseActiveBulletType()
@@ -154,11 +161,15 @@ public class EnemyCannonNew : Cannon
     {
         spawnRotationInDegrees = 0;
 
+        
+
         for (int i = 0; i < totalBulletArrays; i++)
         {
             SetBulletCloneAmount(bulletsPerArray);
 
             //TrySetBulletsToOrange();
+
+            
 
             SpawnAndRotateBullets();
 

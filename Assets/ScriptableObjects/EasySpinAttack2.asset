@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d26fa9164098c24c9169e9f19ea2423, type: 3}
-  m_Name: FastTeleport
+  m_Script: {fileID: 11500000, guid: 05024cf752e41ba4e9d8f44662513ab8, type: 3}
+  m_Name: EasySpinAttack2
   m_EditorClassIdentifier: 
-  name: 
-  timeForEachTeleport: 0.5
-  timeBetweenTeleports: 1
-  timesToTeleport: 3
+  FullAttackData:
+  - bossAbility: {fileID: 11400000, guid: a95c2dae5e73c1341b336221040afcf0, type: 2}
+    timeBeforeAbility: 0
